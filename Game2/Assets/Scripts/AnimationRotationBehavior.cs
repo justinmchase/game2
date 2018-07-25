@@ -9,6 +9,7 @@ public class AnimationRotationBehavior : MonoBehaviour {
 	private float dt = 0.0f;
 
 	public int Animations = 100;
+	public int Animation = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -20,14 +21,10 @@ public class AnimationRotationBehavior : MonoBehaviour {
 	void Update () {
 
 		this.dt += Time.deltaTime;
-		int animation = -1;
 		if (dt >= 1) {
-			animation = this.random.Next(0, this.Animations);
-			this.animator.SetInteger("Animation", animation);
+			this.Animation = this.random.Next(0, this.Animations);
+			this.animator.SetInteger("Animation", this.Animation);
 			this.dt = 0.0f;
 		}
-
-		// Debug.Log(string.Format("{0} {1}", this.dt, animation));
-
 	}
 }

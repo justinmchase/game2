@@ -28,6 +28,7 @@ public class MapManager : MonoBehaviour {
 	public Sprite[] Sprites;
 
 	public ViewportRect previousRect;
+	public Material Material;
 
 	// Use this for initialization
 	void Start () {
@@ -79,12 +80,10 @@ public class MapManager : MonoBehaviour {
 
 				SpriteRenderer r = g.AddComponent<SpriteRenderer>();
 				r.sprite = this.Sprites[this._map[y, x]];
+				r.material = this.Material;
 			}
 		}
 
-		// Debug.Log(string.Format("{0}, {1}", th, tw));
-
-
-		 this.previousRect = currentRect;
+		this.previousRect = currentRect;
 	}
 }
