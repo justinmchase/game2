@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  IdleTime: 5
+  IdleTime: 0
   IsMoving: 0
   IsMovingRight: 0
   IsMovingLeft: 0
