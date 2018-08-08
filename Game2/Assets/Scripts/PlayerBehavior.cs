@@ -12,18 +12,25 @@ public class PlayerBehavior : MonoBehaviour {
 	public bool IsMovingRight = false;
 	public bool IsMovingLeft = false;
 
-	// Update is called once per frame
-	public void Update () {
+	private Rigidbody2D rigidbody;
 
-		this.IdleTime += Time.deltaTime;
+	public void Start() {
+		this.rigidbody = this.GetComponent<Rigidbody2D>();
+	}
+
+	// Update is called once per frame
+	public void FixedUpdate () {
+
+		this.IdleTime += Time.fixedDeltaTime;
 
 		var animator = this.GetComponent<Animator>();
 
-        float moveY = Input.GetAxis("Vertical") * Speed * Time.deltaTime;
-        float moveX = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
+		float speed = this.Speed * (Input.GetKey(KeyCode.LeftShift) ? 3 : 1);
+
+		float moveY = Input.GetAxis("Vertical") * speed * Time.fixedDeltaTime;
+		float moveX = Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime;
 
 		Vector3 velocity = new Vector3(moveX, moveY, 0);
-
 		Vector3 moveDir = velocity;
 		if(moveDir.magnitude != 0){
 			moveDir.Normalize();
@@ -43,10 +50,9 @@ public class PlayerBehavior : MonoBehaviour {
 
 		this.IsMoving = moveDir.magnitude > 0;
 		animator.SetBool("IsMoving", this.IsMoving);
-
 		animator.SetFloat("IdleTime", this.IdleTime);
 		
-		this.transform.position += velocity;
-
+		// this.transform.position += velocity;
+		this.rigidbody.MovePosition(this.transform.position + velocity);
 	}
 }

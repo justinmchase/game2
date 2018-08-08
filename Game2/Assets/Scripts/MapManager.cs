@@ -76,7 +76,8 @@ public class MapManager : MonoBehaviour {
 			if(this.previousRect == null || !this.previousRect.PointInRect(x, y)){
 				var g = new GameObject(string.Format("tile_{0}_{1}", x, y));
 				g.transform.parent = this.transform;
-				g.transform.position = new Vector3(x, y, 0);
+				g.transform.position = new Vector3(x, y, y);
+				
 
 				SpriteRenderer r = g.AddComponent<SpriteRenderer>();
 				r.sprite = this.Sprites[this._map[y, x]];
