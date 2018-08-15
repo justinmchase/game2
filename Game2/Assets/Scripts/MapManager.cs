@@ -30,7 +30,6 @@ public class ViewportRect {
 public class MapManager : MonoBehaviour {
 
 	public Sprite[] Sprites;
-	public GameObject[] Props;
 
 	public ViewportRect previousRect;
 	public Material Material;
@@ -40,20 +39,19 @@ public class MapManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.Map = this.Generator.Generate(
-			this.Sprites.Length,
-			this.Props.Length
-		);
+		this.Map = this.Generator.Generate(this.Sprites.Length);
 		
-		Debug.Log(this.Map.props[0].position.x + "," + this.Map.props[0].position.y);
+		Debug.Log(this.Map.actors[0].position.x + "," + this.Map.actors[0].position.y);
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		Camera.main.transform.position = this.Map.player.position;
 		var radiusY = Camera.main.orthographicSize;
 		var radiusX = radiusY * Camera.main.aspect;
-		
 		var centerX = Camera.main.transform.position.x;
 		var centerY = Camera.main.transform.position.y;
 
@@ -85,16 +83,18 @@ public class MapManager : MonoBehaviour {
 			}
 		}
 
-		for (int n = 0; n < this.Map.props.Length; n++)
+		for (int n = 0; n < this.Map.actors.Length; n++)
 		{
-			var p = this.Map.props[n];
-			var x = p.position.x;
-			var y = p.position.y;
+			var actor = this.Map.actors[n];
+			var x = actor.position.x;
+			var y = actor.position.y;
 			if ((this.previousRect == null || !this.previousRect.PointInRect(x, y)) && currentRect.PointInRect(x, y)) {
-				var g = GameObject.Instantiate(this.Props[p.prop]);
+				var prefab = actor.prefab;
+				var g = GameObject.Instantiate(prefab);
 				g.name = string.Format("prop_{0}", n);
 				g.transform.parent = this.transform;
 				g.transform.position = new Vector3(x, y, y);
+				g.SendMessage("Model", actor, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 

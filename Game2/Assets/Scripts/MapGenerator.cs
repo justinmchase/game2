@@ -2,45 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Prop
+public class Actor
 {
-  public int prop;
+  public GameObject prefab;
   public Vector2 position;
+}
+
+public class Player : Actor
+{
+  public void Update()
+  {
+    // todo
+  }
 }
 
 public class Map 
 {
   public int width;
   public int height;
-  public Prop[] props;
+  public Actor[] actors;
+  public Actor player;
   public int[,] tiles;
 }
 
 public abstract class MapGenerator : ScriptableObject {
   public int Width = 1000;
   public int Height = 1000;
-  public abstract Map Generate(
-    int tiles,
-    int props
-  );
+  public abstract Map Generate(int tiles);
 }
 
 [CreateAssetMenuAttribute(fileName = "RandomMap", menuName = "Map Generators/Random Map", order = 1)]
 public class RandomMapGenerator : MapGenerator
 {
   public int NumRocks = 1000;
+  public GameObject RockPrefab;
+  public GameObject PlayerPrefab;
 
-  public override Map Generate (
-    int tiles,
-    int props)
+  public override Map Generate (int tiles)
   {
+    var numActors = NumRocks + 1;
 		var r = new System.Random();
     var map = new Map
     {
       width = Width,
       height = Height,
       tiles = new int[Width, Height],
-      props = new Prop[NumRocks]
+      actors = new Actor[numActors]
     };
 
     // Create random tiles
@@ -52,18 +59,27 @@ public class RandomMapGenerator : MapGenerator
 			}
 		}
 
-    // Create random props
+    // Create random actor
     for (int n = 0; n < NumRocks; n++)
     {
-      map.props[n] = new Prop
+      map.actors[n] = new Actor
       {
-        prop = r.Next(0, props),
+        prefab = RockPrefab,
         position = new Vector2(
           r.Next(0, Width),
           r.Next(0, Height)
         )
       };
     }
+
+    var player = new Player
+    {
+      prefab = PlayerPrefab,
+      position = new Vector2(Height / 2, Width / 2)
+    };
+
+    map.actors[numActors - 1] = player;
+    map.player = player;
 
     return map;
   }

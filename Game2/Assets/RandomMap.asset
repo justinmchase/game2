@@ -13,4 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RandomMapGenerator
   Width: 1000
   Height: 1000
-  NumRocks: 1000000
+  NumRocks: 1000
+  RockPrefab: {fileID: 1487130870520196, guid: 30b265b1bd9429f42ae7265fe38ca176, type: 2}
+  PlayerPrefab: {fileID: 1611287198426066, guid: 581c504b692e06543a08e1d625508d7f,
+    type: 2}

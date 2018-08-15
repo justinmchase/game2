@@ -13,9 +13,15 @@ public class PlayerBehavior : MonoBehaviour {
 	public bool IsMovingLeft = false;
 
 	private Rigidbody2D rigidbody;
+	private Player player;
 
 	public void Start() {
 		this.rigidbody = this.GetComponent<Rigidbody2D>();
+	}
+
+	public void Model(Player player)
+	{
+		this.player = player;
 	}
 
 	// Update is called once per frame
@@ -53,6 +59,9 @@ public class PlayerBehavior : MonoBehaviour {
 		animator.SetFloat("IdleTime", this.IdleTime);
 		
 		// this.transform.position += velocity;
-		this.rigidbody.MovePosition(this.transform.position + velocity);
+		var p = this.transform.position + velocity;
+		this.rigidbody.MovePosition(p);
+
+		if (this.player != null) this.player.position = this.transform.position;
 	}
 }
