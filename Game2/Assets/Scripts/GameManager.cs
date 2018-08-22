@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+namespace Game
+{
+  public class GameManager : MonoBehaviour
+  {
+    public float Scale = 1.0f;
 
-	public float Scale = 1.0f;
+    public void Update()
+    {
+      var h = Camera.main.pixelHeight;
+      var w = Camera.main.pixelWidth;
 
-	public void Update()
-	{	
-		var h = Camera.main.pixelHeight;
-		var w = Camera.main.pixelWidth;
-		
-		Camera.main.orthographicSize = h / (16 * this.Scale);
-	}
+      Camera.main.orthographicSize = h / (16 * this.Scale);
+    }
+  }
 }

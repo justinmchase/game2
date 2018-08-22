@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: b19b713a563846b42a5ef0327bfb0854
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Chest2.pyxel Texture
+    7400000: Chest2.pyxel Animation 0
+    7400002: Chest2.pyxel Animation 1
+    21300012: Chest2.pyxel Tile 0
+    21300014: Chest2.pyxel Tile 1
+    21300016: Chest2.pyxel Tile 2
+    21300018: Chest2.pyxel Tile 3
+    21300020: Chest2.pyxel Tile 4
+    21300022: Chest2.pyxel Tile 5
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0, y: 0}
+  PixelsPerUnit: 16

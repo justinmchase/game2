@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 617159938}
   - component: {fileID: 617159937}
   - component: {fileID: 617159939}
+  - component: {fileID: 617159940}
   m_Layer: 0
   m_Name: map
   m_TagString: Untagged
@@ -152,7 +153,6 @@ MonoBehaviour:
   - {fileID: 21300014, guid: 425cfe00eb2e7d741a83220e542b79e6, type: 3}
   - {fileID: 21300016, guid: 425cfe00eb2e7d741a83220e542b79e6, type: 3}
   Material: {fileID: 2100000, guid: 6402d385b558a8147b704704f2449ba2, type: 2}
-  Generator: {fileID: 11400000, guid: 9f0e44975230c5d44b4d54168e7a2a23, type: 2}
 --- !u!4 &617159938
 Transform:
   m_ObjectHideFlags: 0
@@ -178,6 +178,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scale: 4
+--- !u!114 &617159940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 617159936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e16e70ef008d549b3fa0f41ec687c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Width: 1000
+  Height: 1000
+  NumRocks: 1000
+  RockPrefab: {fileID: 100000, guid: 8d1eea83333a7304faafcaac645fb002, type: 3}
+  PlayerPrefab: {fileID: 1611287198426066, guid: 581c504b692e06543a08e1d625508d7f,
+    type: 2}
 --- !u!1001 &2081816113
 Prefab:
   m_ObjectHideFlags: 0
@@ -191,7 +208,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4371229279027314, guid: 84db73a54f5ff1846ba4e13e96e9242f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.517
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4371229279027314, guid: 84db73a54f5ff1846ba4e13e96e9242f, type: 2}
       propertyPath: m_LocalPosition.z
