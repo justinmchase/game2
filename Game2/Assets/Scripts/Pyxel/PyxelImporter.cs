@@ -14,6 +14,10 @@ namespace Game.Pyxel
   {
     public Vector2 Pivot = Vector2.zero;
     public int PixelsPerUnit = 16;
+    public Material SpriteMaterial;
+    public Vector2 ColliderOffset = Vector2.zero;
+    public Vector2 ColliderSize = Vector2.one;
+
     public RigidbodyType2D BodyType = RigidbodyType2D.Static;
 
     public override void OnImportAsset(AssetImportContext ctx)
@@ -50,7 +54,7 @@ namespace Game.Pyxel
       var h = pyxel.canvas.height;
       var flattened = FlattenTextures(w, h, layers);
 
-      flattened.name = string.Format("{0} Texture", Path.GetFileNameWithoutExtension(ctx.assetPath));
+      flattened.name = string.Format("{0}_texture", Path.GetFileNameWithoutExtension(ctx.assetPath));
       ctx.AddObjectToAsset(flattened.name, flattened);
 
       var tw = pyxel.canvas.tileWidth;
@@ -61,7 +65,7 @@ namespace Game.Pyxel
         for (var y = 0; y < h; y += th)
         {
           var sprite = Sprite.Create(flattened, new Rect(x, y, tw, th), this.Pivot, this.PixelsPerUnit);
-          sprite.name = string.Format("{0} Tile {1}", Path.GetFileNameWithoutExtension(ctx.assetPath), i++);
+          sprite.name = string.Format("{0}_sprite_{1}", Path.GetFileNameWithoutExtension(ctx.assetPath), i++);
           ctx.AddObjectToAsset(sprite.name, sprite);
           sprites.Add(sprite);
         }
@@ -71,9 +75,7 @@ namespace Game.Pyxel
       {
         var anim = new AnimationClip();
         anim.wrapMode = WrapMode.Once;
-        anim.name = string.Format("{0} Animation {1}", Path.GetFileNameWithoutExtension(ctx.assetPath), i++);
-        // animation.baseTile
-        // animation.length
+        anim.name = string.Format("{0}_animation_{1}", Path.GetFileNameWithoutExtension(ctx.assetPath), i++);
 
         var t = 100; // todo: get from animation
         var keyFrames = new ObjectReferenceKeyframe[animation.length];
@@ -93,22 +95,24 @@ namespace Game.Pyxel
           propertyName = "m_Sprite" // m_Sprite
         };
 
-        // AnimationUtility.GetAnimationClipSettings(anim).loopTime = true;
         AnimationUtility.SetObjectReferenceCurve(anim, binding, keyFrames);
         ctx.AddObjectToAsset(anim.name, anim);
       }
 
       var prefab = new GameObject();
-      prefab.name = string.Format("{0}", Path.GetFileNameWithoutExtension(ctx.assetPath), i++);
+      prefab.name = Path.GetFileNameWithoutExtension(ctx.assetPath);
       if (sprites.Count > 0)
       {
         var rigidbody = prefab.AddComponent<Rigidbody2D>();
         rigidbody.bodyType = this.BodyType;
 
         var collider = prefab.AddComponent<BoxCollider2D>();
+        collider.offset = this.ColliderOffset;
+        collider.size = this.ColliderSize;
 
         var renderer = prefab.AddComponent<SpriteRenderer>();
         renderer.sprite = sprites[0];
+        renderer.material = this.SpriteMaterial;
       }
 
       ctx.AddObjectToAsset(prefab.name, prefab);

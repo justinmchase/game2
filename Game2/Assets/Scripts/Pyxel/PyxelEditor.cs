@@ -27,6 +27,10 @@ namespace Game.Pyxel
                   serializedObject.FindProperty("Pivot"),
                   new GUIContent("Pivot", "Where the pivot point will be located on generated Sprites.")
                 );
+                EditorGUILayout.PropertyField(
+                  serializedObject.FindProperty("SpriteMaterial"),
+                  new GUIContent("Sprite Material", "The Material to use for sprites.")
+                );
                 EditorGUI.indentLevel--;
             }
             EditorGUILayout.Separator();
@@ -35,6 +39,14 @@ namespace Game.Pyxel
             {
                 EditorGUI.indentLevel++;
                 DisplayEnumProperty(serializedObject.FindProperty("BodyType"), Enum.GetNames(typeof(RigidbodyType2D)));
+                EditorGUILayout.PropertyField(
+                  serializedObject.FindProperty("ColliderOffset"),
+                  new GUIContent("Collider Offset", "The offset of the Box Collider 2D.")
+                );
+                EditorGUILayout.PropertyField(
+                  serializedObject.FindProperty("ColliderSize"),
+                  new GUIContent("Collider Size", "The size of the Box Collider 2D.")
+                );
                 EditorGUI.indentLevel--;
             }
             EditorGUILayout.Separator();

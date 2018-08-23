@@ -4,11 +4,11 @@ ScriptedImporter:
   fileIDToRecycleName:
     100000: rock12/rock12
     400000: rock12/rock12/Transform
-    2800000: rock12 Texture
+    2800002: rock12_texture
     5000000: rock12/rock12/Rigidbody2D
     6100000: rock12/rock12/BoxCollider2D
     21200000: rock12/rock12/SpriteRenderer
-    21300000: rock12 Tile 0
+    21300002: rock12_sprite_0
     100100000: rock12
   externalObjects: {}
   userData: 
@@ -17,4 +17,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
   Pivot: {x: 0, y: 0}
   PixelsPerUnit: 16
+  SpriteMaterial: {fileID: 2100000, guid: 6402d385b558a8147b704704f2449ba2, type: 2}
+  ColliderOffset: {x: 0.95, y: 0.9}
+  ColliderSize: {x: 1.6, y: 0.25}
   BodyType: 2
