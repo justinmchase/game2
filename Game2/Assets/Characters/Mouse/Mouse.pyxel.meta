@@ -1,0 +1,90 @@
+fileFormatVersion: 2
+guid: 8c5e450fc9e73a543a1dfea723e526da
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: Mouse/Mouse
+    400000: Mouse/Mouse/Transform
+    2800000: Mouse_texture
+    5000000: Mouse/Mouse/Rigidbody2D
+    6100000: Mouse/Mouse/BoxCollider2D
+    7400000: Mouse_animation_0
+    7400002: Mouse_animation_1
+    7400004: Mouse_animation_2
+    7400006: Mouse_animation_3
+    21200000: Mouse/Mouse/SpriteRenderer
+    21300000: Mouse_sprite_0
+    21300002: Mouse_sprite_1
+    21300004: Mouse_sprite_2
+    21300006: Mouse_sprite_3
+    21300008: Mouse_sprite_4
+    21300010: Mouse_sprite_5
+    21300012: Mouse_sprite_6
+    21300014: Mouse_sprite_7
+    21300016: Mouse_sprite_8
+    21300018: Mouse_sprite_9
+    21300020: Mouse_sprite_10
+    21300022: Mouse_sprite_11
+    21300024: Mouse_sprite_12
+    21300026: Mouse_sprite_13
+    21300028: Mouse_sprite_14
+    21300030: Mouse_sprite_15
+    21300032: Mouse_sprite_16
+    21300034: Mouse_sprite_17
+    21300036: Mouse_sprite_18
+    21300038: Mouse_sprite_19
+    21300040: Mouse_sprite_20
+    21300042: Mouse_sprite_21
+    21300044: Mouse_sprite_22
+    21300046: Mouse_sprite_23
+    21300048: Mouse_sprite_24
+    21300050: Mouse_sprite_25
+    21300052: Mouse_sprite_26
+    21300054: Mouse_sprite_27
+    21300056: Mouse_sprite_28
+    21300058: Mouse_sprite_29
+    21300060: Mouse_sprite_30
+    21300062: Mouse_sprite_31
+    21300064: Mouse_sprite_32
+    21300066: Mouse_sprite_33
+    21300068: Mouse_sprite_34
+    21300070: Mouse_sprite_35
+    21300072: Mouse_sprite_36
+    21300074: Mouse_sprite_37
+    21300076: Mouse_sprite_38
+    21300078: Mouse_sprite_39
+    21300080: Mouse_sprite_40
+    21300082: Mouse_sprite_41
+    21300084: Mouse_sprite_42
+    21300086: Mouse_sprite_43
+    21300088: Mouse_sprite_44
+    21300090: Mouse_sprite_45
+    21300092: Mouse_sprite_46
+    21300094: Mouse_sprite_47
+    21300096: Mouse_sprite_48
+    21300098: Mouse_sprite_49
+    21300100: Mouse_sprite_50
+    21300102: Mouse_sprite_51
+    21300104: Mouse_sprite_52
+    21300106: Mouse_sprite_53
+    21300108: Mouse_sprite_54
+    21300110: Mouse_sprite_55
+    21300112: Mouse_sprite_56
+    21300114: Mouse_sprite_57
+    21300116: Mouse_sprite_58
+    21300118: Mouse_sprite_59
+    21300120: Mouse_sprite_60
+    21300122: Mouse_sprite_61
+    21300124: Mouse_sprite_62
+    21300126: Mouse_sprite_63
+    100100000: Mouse
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0, y: 0}
+  PixelsPerUnit: 16
+  SpriteMaterial: {instanceID: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  BodyType: 2

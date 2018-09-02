@@ -1,7 +1,91 @@
 fileFormatVersion: 2
 guid: eeff4e77c714e634e97b1dbeb998b14d
-DefaultImporter:
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: character1/character1
+    400000: character1/character1/Transform
+    2800000: character1_texture
+    5000000: character1/character1/Rigidbody2D
+    6100000: character1/character1/BoxCollider2D
+    7400000: character1_animation_0
+    7400002: character1_animation_1
+    7400004: character1_animation_2
+    7400006: character1_animation_3
+    7400008: character1_animation_4
+    21200000: character1/character1/SpriteRenderer
+    21300000: character1_sprite_0
+    21300002: character1_sprite_1
+    21300004: character1_sprite_2
+    21300006: character1_sprite_3
+    21300008: character1_sprite_4
+    21300010: character1_sprite_5
+    21300012: character1_sprite_6
+    21300014: character1_sprite_7
+    21300016: character1_sprite_8
+    21300018: character1_sprite_9
+    21300020: character1_sprite_10
+    21300022: character1_sprite_11
+    21300024: character1_sprite_12
+    21300026: character1_sprite_13
+    21300028: character1_sprite_14
+    21300030: character1_sprite_15
+    21300032: character1_sprite_16
+    21300034: character1_sprite_17
+    21300036: character1_sprite_18
+    21300038: character1_sprite_19
+    21300040: character1_sprite_20
+    21300042: character1_sprite_21
+    21300044: character1_sprite_22
+    21300046: character1_sprite_23
+    21300048: character1_sprite_24
+    21300050: character1_sprite_25
+    21300052: character1_sprite_26
+    21300054: character1_sprite_27
+    21300056: character1_sprite_28
+    21300058: character1_sprite_29
+    21300060: character1_sprite_30
+    21300062: character1_sprite_31
+    21300064: character1_sprite_32
+    21300066: character1_sprite_33
+    21300068: character1_sprite_34
+    21300070: character1_sprite_35
+    21300072: character1_sprite_36
+    21300074: character1_sprite_37
+    21300076: character1_sprite_38
+    21300078: character1_sprite_39
+    21300080: character1_sprite_40
+    21300082: character1_sprite_41
+    21300084: character1_sprite_42
+    21300086: character1_sprite_43
+    21300088: character1_sprite_44
+    21300090: character1_sprite_45
+    21300092: character1_sprite_46
+    21300094: character1_sprite_47
+    21300096: character1_sprite_48
+    21300098: character1_sprite_49
+    21300100: character1_sprite_50
+    21300102: character1_sprite_51
+    21300104: character1_sprite_52
+    21300106: character1_sprite_53
+    21300108: character1_sprite_54
+    21300110: character1_sprite_55
+    21300112: character1_sprite_56
+    21300114: character1_sprite_57
+    21300116: character1_sprite_58
+    21300118: character1_sprite_59
+    21300120: character1_sprite_60
+    21300122: character1_sprite_61
+    21300124: character1_sprite_62
+    21300126: character1_sprite_63
+    100100000: character1
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0, y: 0}
+  PixelsPerUnit: 16
+  SpriteMaterial: {instanceID: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  BodyType: 2
