@@ -4,68 +4,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Maps;
+using System.Linq;
 
 namespace Game
 {
-	public class ViewportRect {
-		public int startX;
-		public int startY;
-		public int endX;
-		public int endY;
-
-		public bool PointInRect(int x, int y)
-		{
-			return (x >= startX &&
-				x < endX &&
-				y >= startY &&
-				y < endY ) ;
-		}
-		
-		public bool PointInRect(float x, float y)
-		{
-			return (x >= startX &&
-				x < endX &&
-				y >= startY &&
-				y < endY ) ;
-		}
-	}
 
 	public class MapManager : MonoBehaviour {
 
 		public Sprite[] Sprites;
 
-		public ViewportRect previousRect;
+		public ViewportRectInt previousRect;
 		public Material Material;
 
-		private Map Map;
+		private MapData MapData;
 
 		// Use this for initialization
 		void Start () {
-			var generator = this.GetComponent<MapGenerator>();
-			this.Map = generator.Generate(this.Sprites.Length);
+			var generator = this.GetComponent<RandomMapGenerator>();
+			this.MapData = generator.Generate(this.Sprites.Length, 1000, 1000);
+
+			this.GetComponent<GameManager>().Spawn(this.MapData.spawners.FirstOrDefault(s => s.IsPlayer));
 		}
 		
 		// Update is called once per frame
-		void Update () {
+		public void UpdateRender () {
 
-			Camera.main.transform.position = this.Map.player.position;
-			var radiusY = Camera.main.orthographicSize;
-			var radiusX = radiusY * Camera.main.aspect;
-			var centerX = Camera.main.transform.position.x;
-			var centerY = Camera.main.transform.position.y;
+			var game = this.GetComponent<GameManager>();
+			if(game == null) return;
 
-			var currentRect = new ViewportRect() {
-				startX = (int)Math.Max(0, centerX - radiusX),
-				startY = (int)Math.Max(0, centerY - radiusY),
-				endX = (int)Math.Min(this.Map.width, centerX + radiusX + 2),
-				endY = (int)Math.Min(this.Map.height, centerY + radiusY + 2)
-			};
+			
+			var currentRect = game.viewPort.ToInt().Clamp(new ViewportRectInt(){
+				startX = 0,
+				startY = 0,
+				endX = this.MapData.width + 2,
+				endY = this.MapData.height + 2
+			});
 
 			foreach (Transform child in this.transform) {
-				if (!currentRect.PointInRect((int)child.position.x, (int)child.position.y)){
+				if (!currentRect.PointInRect(child.position.x, child.position.y)){
 					Destroy(child.gameObject);
 				}
 			}
+
 
 			// Debug.Log("{0} {1} {2} {3}")
 			for (int y = currentRect.startY; y < currentRect.endY; y++)
@@ -77,25 +57,22 @@ namespace Game
 					g.transform.position = new Vector3(x, y, y);
 
 					SpriteRenderer r = g.AddComponent<SpriteRenderer>();
-					r.sprite = this.Sprites[this.Map.tiles[y, x]];
+					r.sprite = this.Sprites[this.MapData.tiles[y, x]];
 					r.material = this.Material;
 				}
 			}
 
-			for (int n = 0; n < this.Map.actors.Length; n++)
+			int i = 0;
+			foreach(var spawner in this.MapData.spawners)
 			{
-				var actor = this.Map.actors[n];
-				var x = actor.position.x;
-				var y = actor.position.y;
+      			var x = spawner.Position.x;
+				var y = spawner.Position.y;
 				if ((this.previousRect == null || !this.previousRect.PointInRect(x, y)) && currentRect.PointInRect(x, y)) {
-					var prefab = actor.prefab;
-					var g = GameObject.Instantiate(prefab);
-					g.name = string.Format("prop_{0}", n);
-					g.transform.parent = this.transform;
-					g.transform.position = new Vector3(x, y, y);
-					g.SendMessage("Model", actor, SendMessageOptions.DontRequireReceiver);
+					game.Spawn(spawner);
 				}
 			}
+
+			
 
 			this.previousRect = currentRect;
 		}

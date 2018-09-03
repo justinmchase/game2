@@ -1,0 +1,43 @@
+fileFormatVersion: 2
+guid: 8c5e450fc9e73a543a1dfea723e526da
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: Mouse/Mouse
+    400000: Mouse/Mouse/Transform
+    2800000: Mouse_texture
+    5000000: Mouse/Mouse/Rigidbody2D
+    6100000: Mouse/Mouse/BoxCollider2D
+    7400000: Rat_Run_Right
+    7400002: Rat_Run_Down
+    7400004: Rat_Run_Up
+    7400008: Rat_Idle
+    9500000: Mouse/Mouse/Animator
+    11400000: Mouse/Mouse/MonoBehaviour-Game.CreatureBehavior
+    11400002: Mouse/Mouse/MonoBehaviour-YZSync
+    21200000: Mouse/Mouse/SpriteRenderer
+    21300010: Mouse_sprite_16
+    21300034: Mouse_sprite_17
+    21300036: Mouse_sprite_18
+    21300038: Mouse_sprite_19
+    21300042: Mouse_sprite_20
+    21300048: Mouse_sprite_24
+    21300050: Mouse_sprite_25
+    21300052: Mouse_sprite_26
+    21300054: Mouse_sprite_27
+    22100002: Mouse
+    100100000: Mouse
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0.5, y: 0.5}
+  PixelsPerUnit: 16
+  SpriteMaterial: {instanceID: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  AnimatedFramesOnly: 1
+  BodyType: 0
+  MapToAnimatorController: {fileID: 9100000, guid: 57b279edd65826c4587e7750ba31ff66,
+    type: 2}

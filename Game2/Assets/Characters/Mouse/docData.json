@@ -1,0 +1,158 @@
+{
+  "version": "0.4.8",
+  "canvas": {
+    "width": 128,
+    "height": 128,
+    "tileWidth": 16,
+    "numLayers": 3,
+    "layers": {
+      "0": {
+        "blendMode": "normal",
+        "alpha": 255,
+        "hidden": false,
+        "name": "Layer 2",
+        "muted": false,
+        "tileRefs": {},
+        "soloed": false
+      },
+      "1": {
+        "blendMode": "normal",
+        "alpha": 255,
+        "hidden": false,
+        "name": "Layer 1",
+        "muted": false,
+        "tileRefs": {},
+        "soloed": false
+      },
+      "2": {
+        "blendMode": "normal",
+        "alpha": 255,
+        "hidden": false,
+        "name": "Layer 0",
+        "muted": false,
+        "tileRefs": {},
+        "soloed": false
+      }
+    },
+    "tileHeight": 16
+  },
+  "animations": {
+    "0": {
+      "length": 1,
+      "baseTile": 16,
+      "frameDurationMultipliers": [
+        100
+      ],
+      "name": "Rat_Idle",
+      "frameDuration": 100
+    },
+    "1": {
+      "length": 4,
+      "baseTile": 17,
+      "frameDurationMultipliers": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "name": "Rat_Walk_Right",
+      "frameDuration": 100
+    },
+    "2": {
+      "length": 2,
+      "baseTile": 24,
+      "frameDurationMultipliers": [
+        100,
+        100
+      ],
+      "name": "Rat_Walk_Down",
+      "frameDuration": 100
+    },
+    "3": {
+      "length": 2,
+      "baseTile": 26,
+      "frameDurationMultipliers": [
+        100,
+        100
+      ],
+      "name": "Rat_Walk_Up",
+      "frameDuration": 100
+    }
+  },
+  "tileset": {
+    "fixedWidth": true,
+    "tileWidth": 16,
+    "numTiles": 1,
+    "tilesWide": 8,
+    "tileHeight": 16
+  },
+  "palette": {
+    "width": 12,
+    "numColors": 60,
+    "colors": {
+      "0": null,
+      "1": null,
+      "2": "ff9d9d9d",
+      "3": "ffe06f8b",
+      "4": "ffbe2633",
+      "5": "ff493c2b",
+      "6": "ffa46422",
+      "7": "ffeb8931",
+      "8": null,
+      "9": null,
+      "10": null,
+      "11": null,
+      "12": "fff7e26b",
+      "13": "ffa3ce27",
+      "14": "ff44891a",
+      "15": null,
+      "16": "ff1b2632",
+      "17": "ff005784",
+      "18": "ff31a2f2",
+      "19": "ffb2dcef",
+      "20": null,
+      "21": null,
+      "22": null,
+      "23": null,
+      "24": null,
+      "25": null,
+      "26": null,
+      "27": null,
+      "28": null,
+      "29": null,
+      "30": null,
+      "31": null,
+      "32": null,
+      "33": null,
+      "34": null,
+      "35": null,
+      "36": "ffffffff",
+      "37": "ffd5dada",
+      "38": "ffaab5b8",
+      "39": "ff809195",
+      "40": "ff566c72",
+      "41": "ff2f484e",
+      "42": "ff273b40",
+      "43": "ff1f2f33",
+      "44": "ff172326",
+      "45": "ff0f1719",
+      "46": "ff070b0b",
+      "47": "ff000000",
+      "48": null,
+      "49": null,
+      "50": null,
+      "51": null,
+      "52": null,
+      "53": null,
+      "54": null,
+      "55": null,
+      "56": null,
+      "57": null,
+      "58": null,
+      "59": null
+    },
+    "height": 5
+  },
+  "name": "Mouse",
+  "settings": {}
+}

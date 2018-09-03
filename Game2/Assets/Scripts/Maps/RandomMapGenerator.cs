@@ -1,24 +1,22 @@
 using UnityEngine;
-using Game.Actors;
 
 namespace Game.Maps
 {
-  public class RandomMapGenerator : MapGenerator
+  public class RandomMapGenerator : MonoBehaviour
   {
     public int NumRocks = 1000;
     public GameObject RockPrefab;
     public GameObject PlayerPrefab;
 
-    public override Map Generate(int tiles)
+    public MapData Generate(int tiles, int Width, int Height)
     {
       var numActors = NumRocks + 1;
       var r = new System.Random();
-      var map = new Map
+      var map = new MapData
       {
         width = Width,
         height = Height,
         tiles = new int[Width, Height],
-        actors = new Actor[numActors]
       };
 
       // Create random tiles
@@ -30,27 +28,21 @@ namespace Game.Maps
         }
       }
 
-      // Create random actor
+      // Create random spawners
       for (int n = 0; n < NumRocks; n++)
       {
-        map.actors[n] = new Actor
-        {
-          prefab = RockPrefab,
-          position = new Vector2(
-            r.Next(0, Width),
-            r.Next(0, Height)
-          )
-        };
+        map.spawners.Add(new Spawner(){
+          Position = new Vector3(Random.value * Width, Random.value * Height, 0),
+          Prefab = RockPrefab,
+          Name="Rock"});
       }
 
-      var player = new Player
-      {
-        prefab = PlayerPrefab,
-        position = new Vector2(Height / 2, Width / 2)
-      };
-
-      map.actors[numActors - 1] = player;
-      map.player = player;
+      map.spawners.Add(new Spawner(){
+        Position = new Vector3(Random.value * Width, Random.value * Height, 0),
+        Prefab = PlayerPrefab,
+        IsPlayer = true,
+        Name="Player"
+      });
 
       return map;
     }

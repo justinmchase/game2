@@ -1,7 +1,75 @@
 fileFormatVersion: 2
 guid: eeff4e77c714e634e97b1dbeb998b14d
-DefaultImporter:
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: character1/character1
+    400000: character1/character1/Transform
+    2800000: character1_texture
+    5000000: character1/character1/Rigidbody2D
+    6100000: character1/character1/BoxCollider2D
+    7400000: player_run
+    7400002: player_idle_1
+    7400004: player_idle_2
+    7400006: player_run_down
+    7400008: player_run_up
+    9500000: character1/character1/Animator
+    11400000: character1/character1/MonoBehaviour-Game.CreatureBehavior
+    11400002: character1/character1/MonoBehaviour-YZSync
+    21200000: character1/character1/SpriteRenderer
+    21300000: character1_sprite_0
+    21300002: character1_sprite_1
+    21300004: character1_sprite_2
+    21300006: character1_sprite_3
+    21300008: character1_sprite_4
+    21300010: character1_sprite_5
+    21300012: character1_sprite_6
+    21300014: character1_sprite_7
+    21300016: character1_sprite_8
+    21300018: character1_sprite_9
+    21300020: character1_sprite_10
+    21300022: character1_sprite_11
+    21300024: character1_sprite_12
+    21300026: character1_sprite_13
+    21300028: character1_sprite_14
+    21300030: character1_sprite_15
+    21300032: character1_sprite_16
+    21300034: character1_sprite_17
+    21300036: character1_sprite_18
+    21300038: character1_sprite_19
+    21300040: character1_sprite_20
+    21300042: character1_sprite_21
+    21300044: character1_sprite_22
+    21300046: character1_sprite_23
+    21300048: character1_sprite_24
+    21300050: character1_sprite_25
+    21300052: character1_sprite_26
+    21300054: character1_sprite_27
+    21300056: character1_sprite_28
+    21300058: character1_sprite_29
+    21300060: character1_sprite_30
+    21300062: character1_sprite_31
+    21300064: character1_sprite_32
+    21300066: character1_sprite_33
+    21300068: character1_sprite_34
+    21300070: character1_sprite_35
+    21300072: character1_sprite_36
+    21300074: character1_sprite_37
+    21300076: character1_sprite_38
+    21300078: character1_sprite_39
+    22100000: character1
+    100100000: character1
+    2186277476908879412: ImportLogs
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0.5, y: 0.5}
+  PixelsPerUnit: 16
+  SpriteMaterial: {fileID: 2100000, guid: 6402d385b558a8147b704704f2449ba2, type: 2}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  AnimatedFramesOnly: 1
+  BodyType: 0
+  MapToAnimatorController: {fileID: 9100000, guid: 57b279edd65826c4587e7750ba31ff66,
+    type: 2}
