@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.Experimental.AssetImporters;
+using Game;
 
 // Example code:
 // https://raw.githubusercontent.com/unity3d-jp/AlembicForUnity/master/AlembicImporter/Assets/UTJ/Alembic/Editor/Importer/AlembicImporterEditor.cs
@@ -31,6 +32,10 @@ namespace Game.Pyxel
                   serializedObject.FindProperty("SpriteMaterial"),
                   new GUIContent("Sprite Material", "The Material to use for sprites.")
                 );
+                EditorGUILayout.PropertyField(
+                    serializedObject.FindProperty("AnimatedFramesOnly"),
+                    new GUIContent("Animated Frames Only", "Only export sprites for frames that exist in an animation")
+                );
                 EditorGUI.indentLevel--;
             }
             EditorGUILayout.Separator();
@@ -46,6 +51,10 @@ namespace Game.Pyxel
                 EditorGUILayout.PropertyField(
                   serializedObject.FindProperty("ColliderSize"),
                   new GUIContent("Collider Size", "The size of the Box Collider 2D.")
+                );
+                EditorGUILayout.PropertyField(
+                  serializedObject.FindProperty("MapToAnimatorController"),
+                  new GUIContent("Animator Controller", "The animator controller to clone and map this thing's animations to")
                 );
                 EditorGUI.indentLevel--;
             }

@@ -7,11 +7,14 @@ ScriptedImporter:
     2800000: character1_texture
     5000000: character1/character1/Rigidbody2D
     6100000: character1/character1/BoxCollider2D
-    7400000: character1_animation_0
-    7400002: character1_animation_1
-    7400004: character1_animation_2
-    7400006: character1_animation_3
-    7400008: character1_animation_4
+    7400000: player_run
+    7400002: player_idle_1
+    7400004: player_idle_2
+    7400006: player_run_down
+    7400008: player_run_up
+    9500000: character1/character1/Animator
+    11400000: character1/character1/MonoBehaviour-Game.CreatureBehavior
+    11400002: character1/character1/MonoBehaviour-YZSync
     21200000: character1/character1/SpriteRenderer
     21300000: character1_sprite_0
     21300002: character1_sprite_1
@@ -53,39 +56,20 @@ ScriptedImporter:
     21300074: character1_sprite_37
     21300076: character1_sprite_38
     21300078: character1_sprite_39
-    21300080: character1_sprite_40
-    21300082: character1_sprite_41
-    21300084: character1_sprite_42
-    21300086: character1_sprite_43
-    21300088: character1_sprite_44
-    21300090: character1_sprite_45
-    21300092: character1_sprite_46
-    21300094: character1_sprite_47
-    21300096: character1_sprite_48
-    21300098: character1_sprite_49
-    21300100: character1_sprite_50
-    21300102: character1_sprite_51
-    21300104: character1_sprite_52
-    21300106: character1_sprite_53
-    21300108: character1_sprite_54
-    21300110: character1_sprite_55
-    21300112: character1_sprite_56
-    21300114: character1_sprite_57
-    21300116: character1_sprite_58
-    21300118: character1_sprite_59
-    21300120: character1_sprite_60
-    21300122: character1_sprite_61
-    21300124: character1_sprite_62
-    21300126: character1_sprite_63
+    22100000: character1
     100100000: character1
+    2186277476908879412: ImportLogs
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
-  Pivot: {x: 0, y: 0}
+  Pivot: {x: 0.5, y: 0.5}
   PixelsPerUnit: 16
-  SpriteMaterial: {instanceID: 0}
+  SpriteMaterial: {fileID: 2100000, guid: 6402d385b558a8147b704704f2449ba2, type: 2}
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 1, y: 1}
-  BodyType: 2
+  AnimatedFramesOnly: 1
+  BodyType: 0
+  MapToAnimatorController: {fileID: 9100000, guid: 57b279edd65826c4587e7750ba31ff66,
+    type: 2}
