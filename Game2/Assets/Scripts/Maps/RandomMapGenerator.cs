@@ -7,6 +7,9 @@ namespace Game.Maps
     public int NumRocks = 1000;
     public GameObject RockPrefab;
     public GameObject PlayerPrefab;
+    public GameObject ChestPrefab;
+
+    public GameObject MousePrefab;
 
     public MapData Generate(int tiles, int Width, int Height)
     {
@@ -31,18 +34,38 @@ namespace Game.Maps
       // Create random spawners
       for (int n = 0; n < NumRocks; n++)
       {
-        map.spawners.Add(new Spawner(){
+        map.spawners.Add(new Spawner() {
           Position = new Vector3(Random.value * Width, Random.value * Height, 0),
           Prefab = RockPrefab,
-          Name="Rock"});
+          Name = "Rock"
+        });
       }
 
-      map.spawners.Add(new Spawner(){
+      for (int n = 0; n < NumRocks; n++)
+      {
+        map.spawners.Add(new Spawner() {
+          Position = new Vector3(Random.value * Width, Random.value * Height, 0),
+          Prefab = ChestPrefab,
+          Name = "Chest"
+        });
+      }
+
+      map.spawners.Add(new Spawner() {
         Position = new Vector3(Random.value * Width, Random.value * Height, 0),
         Prefab = PlayerPrefab,
         IsPlayer = true,
-        Name="Player"
+        Name = "Player"
       });
+
+      for (int n = 0; n < NumRocks; n++)
+      {
+        map.spawners.Add(new Spawner() {
+          Position = new Vector3(Random.value * Width, Random.value * Height, 0),
+          Prefab = MousePrefab,
+          IsPlayer = false,
+          Name = "Mouse"
+        });
+      }
 
       return map;
     }

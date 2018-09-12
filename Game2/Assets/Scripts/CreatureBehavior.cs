@@ -20,6 +20,11 @@ namespace Game
 
     private Rigidbody2D _rigidbody;
 
+    public GameObject interactiveObject;
+
+    public float StateTime = 0f;
+
+
     public void Start()
     {
       this._rigidbody = this.GetComponent<Rigidbody2D>();
@@ -29,11 +34,15 @@ namespace Game
     public void FixedUpdate()
     {
 
+      this.StateTime += Time.fixedDeltaTime;
+
       this.IdleTime += Time.fixedDeltaTime;
 
       var animator = this.GetComponent<Animator>();
 
       float speed = this.Speed * (IsRunning ? 3 : 1);
+
+      this.MoveDirection.Normalize();
 
       float moveY =  MoveDirection.x * speed * Time.fixedDeltaTime;
       float moveX = MoveDirection.y * speed * Time.fixedDeltaTime;
@@ -64,8 +73,17 @@ namespace Game
       animator.SetFloat("IdleTime", this.IdleTime);
 
       // this.transform.position += velocity;
+
       var p = this.transform.position + velocity;
       this._rigidbody.MovePosition(p);
+    }
+
+    public void Interact(bool engage)
+    {
+      if (this.interactiveObject != null)
+      {
+        this.interactiveObject.SendMessage("Interact", engage);
+      }
     }
   }
 }

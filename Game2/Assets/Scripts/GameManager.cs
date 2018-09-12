@@ -10,6 +10,7 @@ namespace Game
   {
     public float Scale = 1.0f;
     public GameObject player;
+    public GameObject interactiveObject;
 
     public ViewportRect viewPort;
 
@@ -24,7 +25,7 @@ namespace Game
       
     }
 
-    public void HandleCameraMovement(){
+    public void HandleCameraMovement() {
       var h = Camera.main.pixelHeight;
       var w = Camera.main.pixelWidth;
 
@@ -40,20 +41,28 @@ namespace Game
       this.viewPort = ViewportRect.FromCenterRadius(centerX, centerY, radiusX, radiusY);
     }
 
-    public void HandlePlayerInput(){
-      if(player != null){
+    public void HandlePlayerInput() {
+      if(player != null) {
         player.GetComponent<CreatureBehavior>().IsRunning = Input.GetKey(KeyCode.LeftShift);
         player.GetComponent<CreatureBehavior>().MoveDirection = new Vector3(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), 0);
+
+        var cb = player.GetComponent<CreatureBehavior>();
+        if (Input.GetKeyDown(KeyCode.Return)) {
+          cb.Interact(true);
+        }
+        if (Input.GetKeyUp(KeyCode.Return)) {
+          cb.Interact(false);
+        }
       }
     }
 
-    public void Spawn(Spawner spawner){
-      if(spawner == null){
+    public void Spawn(Spawner spawner) {
+      if(spawner == null) {
         Debug.Log("Tried to spawn null spawner");
         return;
       }
 
-      if(spawner.SpawnedObjects.Any()){
+      if(spawner.SpawnedObjects.Any()) {
         Debug.Log("Tried to spawn too many " + spawner.Name);
         return;
       }
