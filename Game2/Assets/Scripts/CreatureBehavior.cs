@@ -20,6 +20,8 @@ namespace Game
 
     private Rigidbody2D _rigidbody;
 
+    public GameObject interactiveObject;
+
     public void Start()
     {
       this._rigidbody = this.GetComponent<Rigidbody2D>();
@@ -66,6 +68,14 @@ namespace Game
       // this.transform.position += velocity;
       var p = this.transform.position + velocity;
       this._rigidbody.MovePosition(p);
+    }
+
+    public void Interact(bool engage)
+    {
+      if (this.interactiveObject != null)
+      {
+        this.interactiveObject.SendMessage("Interact", engage);
+      }
     }
   }
 }

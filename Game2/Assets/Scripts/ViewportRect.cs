@@ -16,7 +16,6 @@ namespace Game {
 				endX = centerX + radiusX,
 				endY = centerY + radiusY,
 			};
-
         }
 
 		public bool PointInRect(int x, int y)

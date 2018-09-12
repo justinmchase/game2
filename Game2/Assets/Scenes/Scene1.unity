@@ -178,6 +178,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scale: 4
+  player: {fileID: 0}
+  interactiveObject: {fileID: 0}
+  nextId: 0
 --- !u!114 &617159940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,11 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e16e70ef008d549b3fa0f41ec687c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 1000
-  Height: 1000
   NumRocks: 1000
   RockPrefab: {fileID: 100000, guid: 8d1eea83333a7304faafcaac645fb002, type: 3}
   PlayerPrefab: {fileID: 1611287198426066, guid: 581c504b692e06543a08e1d625508d7f,
+    type: 2}
+  ChestPrefab: {fileID: 1674526757911682, guid: d88e0852ac1b3054fbb264289c280435,
     type: 2}
 --- !u!1001 &2081816113
 Prefab:
