@@ -9,6 +9,8 @@ namespace Game.Maps
     public GameObject PlayerPrefab;
     public GameObject ChestPrefab;
 
+    public GameObject MousePrefab;
+
     public MapData Generate(int tiles, int Width, int Height)
     {
       var numActors = NumRocks + 1;
@@ -54,6 +56,16 @@ namespace Game.Maps
         IsPlayer = true,
         Name = "Player"
       });
+
+      for (int n = 0; n < NumRocks; n++)
+      {
+        map.spawners.Add(new Spawner() {
+          Position = new Vector3(Random.value * Width, Random.value * Height, 0),
+          Prefab = MousePrefab,
+          IsPlayer = false,
+          Name = "Mouse"
+        });
+      }
 
       return map;
     }
