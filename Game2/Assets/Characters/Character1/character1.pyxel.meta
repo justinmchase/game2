@@ -12,6 +12,11 @@ ScriptedImporter:
     7400004: player_idle_2
     7400006: player_run_down
     7400008: player_run_up
+    7400010: player_attack_wand
+    7400012: player_attack_wand_up
+    7400014: player_attack_wand_down
+    7400016: player_attack_sword
+    7400018: player_attack_sword_down
     9500000: character1/character1/Animator
     11400000: character1/character1/MonoBehaviour-Game.CreatureBehavior
     11400002: character1/character1/MonoBehaviour-YZSync
@@ -56,6 +61,16 @@ ScriptedImporter:
     21300074: character1_sprite_37
     21300076: character1_sprite_38
     21300078: character1_sprite_39
+    21300080: character1_sprite_41
+    21300082: character1_sprite_42
+    21300084: character1_sprite_43
+    21300086: character1_sprite_44
+    21300088: character1_sprite_45
+    21300090: character1_sprite_46
+    21300092: character1_sprite_49
+    21300094: character1_sprite_50
+    21300096: character1_sprite_51
+    21300098: character1_sprite_52
     22100000: character1
     100100000: character1
     2186277476908879412: ImportLogs

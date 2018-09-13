@@ -42,10 +42,8 @@ namespace Game
 
       float speed = this.Speed * (IsRunning ? 3 : 1);
 
-      this.MoveDirection.Normalize();
-
-      float moveY =  MoveDirection.x * speed * Time.fixedDeltaTime;
-      float moveX = MoveDirection.y * speed * Time.fixedDeltaTime;
+      float moveY =  MoveDirection.y * speed * Time.fixedDeltaTime;
+      float moveX = MoveDirection.x * speed * Time.fixedDeltaTime;
 
       Vector3 velocity = new Vector3(moveX, moveY, 0);
       Vector3 moveDir = velocity;

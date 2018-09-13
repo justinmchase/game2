@@ -22,8 +22,11 @@ public class ChasePlayer : StateMachineBehaviour {
 		var game = GameObject.Find("map").GetComponent<GameManager>();
 		var creature = animator.GetComponent<CreatureBehavior>();
 		if(creature != null){
-			creature.MoveDirection = (game.player.transform.position.XY() - creature.transform.position.XY()).normalized;
-			Debug.Log("shoop" + creature.gameObject.name);
+			var dir = (game.player.transform.position - creature.transform.position);
+			dir.z = 0;
+			//dir.Normalize();
+			creature.MoveDirection = dir.normalized;
+			Debug.Log("shoop " + game.player.transform.position.x + "-" + creature.transform.position.x +"=" + dir.x );
 		}
 
 		if(creature.StateTime > 5f){

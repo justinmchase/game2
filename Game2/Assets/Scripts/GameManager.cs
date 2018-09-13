@@ -44,7 +44,7 @@ namespace Game
     public void HandlePlayerInput() {
       if(player != null) {
         player.GetComponent<CreatureBehavior>().IsRunning = Input.GetKey(KeyCode.LeftShift);
-        player.GetComponent<CreatureBehavior>().MoveDirection = new Vector3(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), 0);
+        player.GetComponent<CreatureBehavior>().MoveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 
         var cb = player.GetComponent<CreatureBehavior>();
         if (Input.GetKeyDown(KeyCode.Return)) {
