@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace Game
 {
+  public enum Teams{
+    Player, 
+    Monster,
+    Neutral
+  };
+
   public class CreatureBehavior : MonoBehaviour
   {
 
@@ -23,6 +29,10 @@ namespace Game
     public GameObject interactiveObject;
 
     public float StateTime = 0f;
+
+    public Teams Team = Teams.Monster;
+
+    public GameObject AttackFocus = null;
 
 
     public void Start()

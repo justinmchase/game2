@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 212581946780113276}
   - component: {fileID: 95281003621060984}
   - component: {fileID: 114906103678638764}
-  - component: {fileID: 114466608210338126}
   m_Layer: 0
   m_Name: character1
   m_TagString: Untagged
@@ -77,10 +76,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.042093992, y: -0.6614804}
+  m_Offset: {x: 0.042093992, y: 0.0868001}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.1}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -108,18 +107,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114466608210338126
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259119511418256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eed7a0e0b9828f4a87f4e05313daf23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: -1
 --- !u!114 &114906103678638764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +127,8 @@ MonoBehaviour:
   IsRunning: 0
   interactiveObject: {fileID: 0}
   StateTime: 0
+  Team: 0
+  AttackFocus: {fileID: 0}
 --- !u!212 &212581946780113276
 SpriteRenderer:
   m_ObjectHideFlags: 1
