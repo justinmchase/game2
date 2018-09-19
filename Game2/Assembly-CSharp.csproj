@@ -53,15 +53,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AttackHitboxBehavior.cs" />
      <Compile Include="Assets\Scripts\ChasePlayer.cs" />
      <Compile Include="Assets\Scripts\ChestBehavior.cs" />
      <Compile Include="Assets\Scripts\CreatureBehavior.cs" />
      <Compile Include="Assets\Scripts\Extensions.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\MapManager.cs" />
-     <Compile Include="Assets\Scripts\Maps\MapData.cs" />
-     <Compile Include="Assets\Scripts\Maps\RandomMapGenerator.cs" />
-     <Compile Include="Assets\Scripts\Maps\Spawner.cs" />
+     <Compile Include="Assets\Scripts\PlayerHealthBar.cs" />
+     <Compile Include="Assets\Scripts\PlayerManaBar.cs" />
      <Compile Include="Assets\Scripts\Pyxel\PyxelAnimations.cs" />
      <Compile Include="Assets\Scripts\Pyxel\PyxelCanvas.cs" />
      <Compile Include="Assets\Scripts\Pyxel\PyxelEditor.cs" />
@@ -72,6 +71,7 @@
      <Compile Include="Assets\Scripts\Pyxel\PyxelSettings.cs" />
      <Compile Include="Assets\Scripts\Pyxel\PyxelTileRef.cs" />
      <Compile Include="Assets\Scripts\Pyxel\PyxelTileset.cs" />
+     <Compile Include="Assets\Scripts\SpawnerBehavior.cs" />
      <Compile Include="Assets\Scripts\StandThere.cs" />
      <Compile Include="Assets\Scripts\ViewportRect.cs" />
      <Compile Include="Assets\Scripts\ViewportRectInt.cs" />

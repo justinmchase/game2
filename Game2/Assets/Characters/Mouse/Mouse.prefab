@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 212741766455264324}
   - component: {fileID: 95300952120934476}
   - component: {fileID: 114648436903999666}
-  - component: {fileID: 114400079091816136}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -64,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61500075628065798
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -108,18 +107,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114400079091816136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1336860803580938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eed7a0e0b9828f4a87f4e05313daf23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: -1
 --- !u!114 &114648436903999666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +127,8 @@ MonoBehaviour:
   IsRunning: 0
   interactiveObject: {fileID: 0}
   StateTime: 0
+  Team: 1
+  AttackFocus: {fileID: 0}
 --- !u!212 &212741766455264324
 SpriteRenderer:
   m_ObjectHideFlags: 1

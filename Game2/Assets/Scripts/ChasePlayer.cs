@@ -26,11 +26,9 @@ public class ChasePlayer : StateMachineBehaviour {
 			dir.z = 0;
 			//dir.Normalize();
 			creature.MoveDirection = dir.normalized;
-			Debug.Log("shoop " + game.player.transform.position.x + "-" + creature.transform.position.x +"=" + dir.x );
 		}
 
 		if(creature.StateTime > 5f){
-			Debug.Log("whoop");
 			creature.StateTime = 0;
 			animator.SetBool("IsChasing", false);
 		}
