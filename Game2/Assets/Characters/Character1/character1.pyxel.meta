@@ -79,7 +79,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
-  Pivot: {x: 0.5, y: 0.5}
+  Pivot: {x: 0.5, y: 0.1}
   PixelsPerUnit: 16
   SpriteMaterial: {fileID: 2100000, guid: 6402d385b558a8147b704704f2449ba2, type: 2}
   ColliderOffset: {x: 0, y: 0}
