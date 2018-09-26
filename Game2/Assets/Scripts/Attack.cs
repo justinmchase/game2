@@ -1,16 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Game;
 
-public static class Extensions {
-
-		public static Vector3 XY(this Vector3 v){
-			return new Vector3(v.x, v.y, 0f);
-		}
-}
-
-public class ChasePlayer : StateMachineBehaviour {
+public class Attack : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -18,21 +10,9 @@ public class ChasePlayer : StateMachineBehaviour {
 	//}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		var game = GameObject.Find("game").GetComponent<GameManager>();
-		var creature = animator.GetComponent<CreatureBehavior>();
-		if(creature != null){
-			var dir = (game.player.transform.position - creature.transform.position);
-			dir.z = 0;
-			//dir.Normalize();
-			creature.MoveDirection = dir.normalized;
-		}
-
-		if(creature.StateTime > 5f){
-			creature.StateTime = 0;
-			animator.SetBool("IsChasing", false);
-		}
-	}
+	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+	//
+	//}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
