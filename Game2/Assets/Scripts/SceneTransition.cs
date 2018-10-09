@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
-  public class ChestBehavior : MonoBehaviour
+  public class SceneTransition : MonoBehaviour
   {
     public GameObject InteractionPopup;
+    public string Destination;
 
     private bool _entered;
-    private GameObject _popup;
     private GameObject _player;
-
-    private bool _isOpen;
 
     void Awake ()
     {
@@ -21,11 +20,7 @@ namespace Game
 
     public void Interact(bool engaged)
     {
-      if (engaged)
-      {
-        _isOpen = !_isOpen;
-        this.GetComponent<Animator>().SetBool("IsOpen", _isOpen);
-      }
+      this.GoToScene();
     }
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -33,27 +28,23 @@ namespace Game
       if (col.gameObject == _player)
       {
         _entered = true;
-        _popup = GameObject.Instantiate(this.InteractionPopup);
-        _popup.name = "interaction popup";
-        _popup.transform.parent = this.transform;
-        _popup.transform.position = this.transform.position;
-
         _player.GetComponent<CreatureBehavior>().interactiveObject = this.gameObject;
+        InteractionPopup.SetActive(true);
       }
     }
 
     public void OnTriggerExit2D(Collider2D col)
     {
-      if (col.gameObject == _player && _popup != null)
+      if (col.gameObject == _player)
       {
         _entered = false;
-        GameObject.Destroy(_popup);
-        _popup = null;
         _player.GetComponent<CreatureBehavior>().interactiveObject = null;
-        
-        _isOpen = false;
-        this.GetComponent<Animator>().SetBool("IsOpen", _isOpen);
+        InteractionPopup.SetActive(false);
       }
+    }
+
+    public void GoToScene(){
+      SceneManager.LoadScene(this.Destination);
     }
   }
 }

@@ -93,5 +93,11 @@ namespace Game
         this.interactiveObject.SendMessage("Interact", engage);
       }
     }
+
+    public void Attack(){
+      if(this.AttackFocus != null){
+        Game.State.instance.HP--;
+      }
+    }
   }
 }

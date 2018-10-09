@@ -11,22 +11,26 @@ namespace Game
     public float Scale = 1.0f;
     public GameObject player;
     public GameObject interactiveObject;
-
+    public GameObject UI;
+    
     public ViewportRect viewPort;
 
     public int nextId = 0;
 
     public static GameManager current;
+  
 
     public void Awake(){
       Debug.Log("set gamemanager");
       GameManager.current = this;
+      State.instance.InitState();
     }
 
     public void Update()
     {
       this.HandleCameraMovement();
-      this.HandlePlayerInput();    
+      this.HandlePlayerInput();
+
     }
 
     public void HandleCameraMovement() {
