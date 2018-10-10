@@ -1,0 +1,45 @@
+fileFormatVersion: 2
+guid: 1caa63c78abab3f4d97e5e823ab09af9
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: Gizmos/Gizmos
+    400000: Gizmos/Gizmos/Transform
+    2800000: Gizmos_texture
+    5000000: Gizmos/Gizmos/Rigidbody2D
+    6100000: Gizmos/Gizmos/BoxCollider2D
+    9500000: Gizmos/Gizmos/Animator
+    11400000: Gizmos/Gizmos/MonoBehaviour-Game.CreatureBehavior
+    11400002: Gizmos/Gizmos/MonoBehaviour-YZSync
+    21200000: Gizmos/Gizmos/SpriteRenderer
+    21300000: Gizmos_sprite_0
+    21300002: Gizmos_sprite_1
+    21300004: Gizmos_sprite_2
+    21300006: Gizmos_sprite_3
+    21300008: Gizmos_sprite_4
+    21300010: Gizmos_sprite_5
+    21300012: Gizmos_sprite_6
+    21300014: Gizmos_sprite_7
+    21300016: Gizmos_sprite_8
+    21300018: Gizmos_sprite_9
+    21300020: Gizmos_sprite_10
+    21300022: Gizmos_sprite_11
+    21300024: Gizmos_sprite_12
+    21300026: Gizmos_sprite_13
+    21300028: Gizmos_sprite_14
+    21300030: Gizmos_sprite_15
+    21300032: Gizmos_sprite_16
+    21300034: Gizmos_sprite_17
+    100100000: Gizmos
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0, y: 0}
+  PixelsPerUnit: 16
+  SpriteMaterial: {fileID: 2100000, guid: 6402d385b558a8147b704704f2449ba2, type: 2}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  AnimatedFramesOnly: 0
+  BodyType: 2
+  MapToAnimatorController: {instanceID: 0}

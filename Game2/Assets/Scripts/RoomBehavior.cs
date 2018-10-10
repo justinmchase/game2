@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class RoomBehavior : MonoBehaviour {
-	public GameObject Floor;
-	public GameObject Walls;
+
+	void Start(){
+		
+	}
 }
