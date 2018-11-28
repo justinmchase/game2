@@ -4,8 +4,5 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class RoomBehavior : MonoBehaviour {
-
-	void Start(){
-		
-	}
+	public bool IsStub = false;
 }
