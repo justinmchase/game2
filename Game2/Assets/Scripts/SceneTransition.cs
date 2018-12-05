@@ -3,48 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Game
+public class SceneTransition : MonoBehaviour
 {
-  public class SceneTransition : MonoBehaviour
+  public GameObject InteractionPopup;
+  public string Destination;
+
+  private bool _entered;
+  private GameObject _player;
+
+  void Awake ()
   {
-    public GameObject InteractionPopup;
-    public string Destination;
+    _player = GameObject.Find("game").GetComponent<GameManager>().player;
+  }
 
-    private bool _entered;
-    private GameObject _player;
+  public void Interact(bool engaged)
+  {
+    this.GoToScene();
+  }
 
-    void Awake ()
+  public void OnTriggerEnter2D(Collider2D col)
+  {
+    if (col.gameObject == _player)
     {
-      _player = GameObject.Find("game").GetComponent<GameManager>().player;
+      _entered = true;
+      _player.GetComponent<CreatureBehavior>().interactiveObject = this.gameObject;
+      InteractionPopup.SetActive(true);
     }
+  }
 
-    public void Interact(bool engaged)
+  public void OnTriggerExit2D(Collider2D col)
+  {
+    if (col.gameObject == _player)
     {
-      this.GoToScene();
+      _entered = false;
+      _player.GetComponent<CreatureBehavior>().interactiveObject = null;
+      InteractionPopup.SetActive(false);
     }
+  }
 
-    public void OnTriggerEnter2D(Collider2D col)
-    {
-      if (col.gameObject == _player)
-      {
-        _entered = true;
-        _player.GetComponent<CreatureBehavior>().interactiveObject = this.gameObject;
-        InteractionPopup.SetActive(true);
-      }
-    }
-
-    public void OnTriggerExit2D(Collider2D col)
-    {
-      if (col.gameObject == _player)
-      {
-        _entered = false;
-        _player.GetComponent<CreatureBehavior>().interactiveObject = null;
-        InteractionPopup.SetActive(false);
-      }
-    }
-
-    public void GoToScene(){
-      SceneManager.LoadScene(this.Destination);
-    }
+  public void GoToScene(){
+    SceneManager.LoadScene(this.Destination);
   }
 }

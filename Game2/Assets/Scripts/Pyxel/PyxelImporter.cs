@@ -6,7 +6,6 @@ using System.IO;
 using Ionic.Zip;
 using System.Linq;
 using System.Collections.Generic;
-using Game;
 
 namespace Game.Pyxel
 {
@@ -111,7 +110,7 @@ namespace Game.Pyxel
 
         
         AnimationUtility.SetObjectReferenceCurve(anim, binding, keyFrames);
-        if(anim.name.Contains(new[]{"idle", "run"})){
+        if(anim.name.Contains(new []{"idle", "run"})){
           AnimationClipSettings settings = AnimationUtility.GetAnimationClipSettings(anim);
           settings.loopTime = true;
           AnimationUtility.SetAnimationClipSettings(anim, settings);

@@ -5,19 +5,21 @@ using UnityEngine.Tilemaps;
 using System.Linq;
 
 public class DungeonLevelGenerator : MonoBehaviour {
-
 	public GameObject[] StartRooms;
 	public GameObject[] GrowRooms;
 	public GameObject[] EndRooms;
 	public GameObject[] FillRooms;
 	public GameObject[] Caps;
-
-	public int MaxRooms = 20;
-	public int Seed = 1001;
+	public int MaxStartRooms = 1;
+	public int MaxGrowRooms = 5;
+	public int MaxEndRooms = 1;
+	public int MaxFillRooms = 0;
 
 	private System.Random rand;
 
 	public Texture2D debugImage;
+
+	public GameObject Level;
 
 	private HashSet<Vector3Int> occupiedSpaces = new HashSet<Vector3Int>();
 
@@ -25,56 +27,47 @@ public class DungeonLevelGenerator : MonoBehaviour {
 
 	private HashSet<Vector3Int> misses = new HashSet<Vector3Int>();
 
-	// Use this for initialization
-	void Start () {
-
-		this.rand = new System.Random(this.Seed);
-		this.debugImage = new Texture2D(128, 128);
-		this.GenerateLevel();
-
-	}
-
-	public void GenerateLevel()
+	public void GenerateLevel(int seed, int direction)
 	{
+		this.rand = new System.Random(seed);
+		this.debugImage = new Texture2D(128, 128);
+		this.Level = new GameObject();
+		this.Level.transform.parent = this.transform;
+		this.Level.name = "Level - " + seed;
+
 		var openDoors = new List<RoomConnectorBehavior>();
-		// var roomPrefab = Rooms[0];
-
-		// var room = GameObject.Instantiate(roomPrefab);
-		// this.UpdateOpenDoors(openDoors, room.GetComponentsInChildren<RoomConnectorBehavior>().ToList());
-		// this.Occupy(room, Vector3.zero);
-
-		// int limit = MaxRooms;
-		// var stubs = this.Rooms.Where(r => r.GetComponent<RoomBehavior>().IsStub).ToArray();
-
-		var MaxStartRooms = 1;
-		var MaxGrowRooms = 25;
-		var MaxEndRooms = 1;
-		var MaxFillRooms = 0;
+		this.occupiedSpaces.Clear();
+		this.occupiedDoorSpaces.Clear();
+		this.misses.Clear();
 		try
 		{
+			var bail = 0;
 			var i = 0;
-
 			GrowDungeon(null, this.StartRooms, openDoors);
 
-
 			i = 0;
-			while(i < MaxGrowRooms) {
+			while(i < this.MaxGrowRooms && bail < 10000) {
+				bail++;
 				var door = openDoors.ElementAt(rand.Next(openDoors.Count));
 				if(GrowDungeon(door, this.GrowRooms, openDoors, 1)) i++;
 			}
 
 			i = 0;
-			while(i < MaxEndRooms) {
+			while(i < this.MaxEndRooms && bail < 10000) {
+				bail++;
 			  var door = openDoors.ElementAt(rand.Next(openDoors.Count));
 				if(GrowDungeon(door, this.EndRooms, openDoors, 1)) i++;
 			}
 
-			i = 0;
-			while(openDoors.Any()) {
+			while(openDoors.Any() && bail < 10000) {
+				bail++;
 				var door = openDoors.ElementAt(rand.Next(openDoors.Count));
-				if(GrowDungeon(door, this.Caps, openDoors)) i++;
+				GrowDungeon(door, this.Caps, openDoors);
 			}
 
+			var spawner = this.Level.GetComponentsInChildren<StairsBehavior>().First(s => s.Direction == -direction);
+			spawner.Entered = true;
+			GameManager.current.player.transform.position = spawner.transform.position;
 		}
 		finally
 		{
@@ -86,6 +79,7 @@ public class DungeonLevelGenerator : MonoBehaviour {
 
 		if(door == null){
 			var room = GameObject.Instantiate(rooms.First());
+			room.transform.parent = this.Level.transform;
 			this.UpdateOpenDoors(openDoors, room.GetComponentsInChildren<RoomConnectorBehavior>().ToList());
 			this.Occupy(room, Vector3.zero);
 			return true;
@@ -108,6 +102,7 @@ public class DungeonLevelGenerator : MonoBehaviour {
 			if (this.CheckOccupancy(s, d, maxRoomConnections)) {
 				nextRoom = GameObject.Instantiate(s);
 				nextRoom.transform.position = d;
+				nextRoom.transform.parent = this.Level.transform;
 				
 				var newDoors = nextRoom.GetComponentsInChildren<RoomConnectorBehavior>().ToList();
 				this.UpdateOpenDoors(openDoors, newDoors);

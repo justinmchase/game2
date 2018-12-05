@@ -123,7 +123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4043977373463876}
   - component: {fileID: 212356548421309062}
-  - component: {fileID: 114748324040352658}
+  - component: {fileID: 114772069562549540}
+  - component: {fileID: 61335983004879538}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -228,6 +229,31 @@ Transform:
   m_Father: {fileID: 4648581171323932}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61335983004879538
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938783255768138}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114611769751082454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Direction: 2
---- !u!114 &114748324040352658
+--- !u!114 &114772069562549540
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,13 +274,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1938783255768138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3c418be30a0404bb299da5d7c4b3c8, type: 3}
+  m_Script: {fileID: 11500000, guid: f03f6bb2a907ca34082c14ec63f6fcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1259119511418256, guid: 82efda8e00f302d42baea5b464b5c03c, type: 2}
-  SpawnedObjects: []
-  IsPlayer: 1
-  SpawnType: 1
+  Direction: -1
+  Entered: 0
 --- !u!114 &114781200292908468
 MonoBehaviour:
   m_ObjectHideFlags: 1

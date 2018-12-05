@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.Experimental.AssetImporters;
-using Game;
 
 // Example code:
 // https://raw.githubusercontent.com/unity3d-jp/AlembicForUnity/master/AlembicImporter/Assets/UTJ/Alembic/Editor/Importer/AlembicImporterEditor.cs
