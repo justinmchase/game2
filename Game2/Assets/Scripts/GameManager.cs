@@ -18,6 +18,8 @@ namespace Game
     public int nextId = 0;
 
     public static GameManager current;
+
+    public List<int> DungeonLevelSeeds = new List<int>();
   
 
     public void Awake(){

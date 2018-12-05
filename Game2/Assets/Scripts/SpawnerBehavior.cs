@@ -5,7 +5,7 @@ using Game;
 
 public class SpawnerBehavior : MonoBehaviour {
 
-	public enum eSpawnType {GameStart, None};
+	public enum eSpawnType {GameStart, EnterDungeon, None};
 
 	public GameObject Prefab;
 	public List<GameObject> SpawnedObjects = new List<GameObject>();
@@ -28,6 +28,13 @@ public class SpawnerBehavior : MonoBehaviour {
 	void Start () {
 		if(this.SpawnType == eSpawnType.GameStart){
 			this.Spawn();
+		}else if(this.SpawnType == eSpawnType.EnterDungeon){
+			if(this.IsPlayer){
+				if(GameManager.current.player == null){
+					GameManager.current.player =	GameObject.Instantiate(Prefab);
+				}
+				GameManager.current.player.transform.position = this.transform.position;
+			}
 		}
 	}
 	

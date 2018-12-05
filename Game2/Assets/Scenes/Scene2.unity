@@ -155,51 +155,47 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93fe6f7331f46814089a52bf39ed5390, type: 2}
   m_IsPrefabAsset: 0
---- !u!1001 &902266324
+--- !u!1001 &608495923
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -19.4248
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.75304127
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4592851118249712, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+    - target: {fileID: 4648581171323932, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1042351639847296, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1074062929
 Prefab:
@@ -276,15 +272,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224f3eacf6e34254b8703ce68f33e306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rooms:
+  StartRooms:
+  - {fileID: 1530236633416134, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
+  GrowRooms:
   - {fileID: 1854551287842308, guid: 259e80836e41c6740ab1891721453193, type: 2}
+  - {fileID: 1042351639847296, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+  - {fileID: 1153902339532888, guid: 2ee4317db135d1a43a2dc54a5bc05873, type: 2}
+  EndRooms:
+  - {fileID: 1969780900586954, guid: 4303bea8ba129ac4399ea24ec0c3f8c1, type: 2}
+  FillRooms:
+  - {fileID: 1854551287842308, guid: 259e80836e41c6740ab1891721453193, type: 2}
+  - {fileID: 1042351639847296, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
+  Caps:
   - {fileID: 1356448439389248, guid: 6cbe5b4e98c17c94d963fa644236e8ef, type: 2}
   - {fileID: 1282259408020428, guid: 84d7b05f6b3f91c41933b58047c6db38, type: 2}
   - {fileID: 1699445228861408, guid: 0f29ee3ebda29d24792cc49d55115d91, type: 2}
   - {fileID: 1802537823735982, guid: ac028e2f1d3270a4b98627399473b2d7, type: 2}
-  - {fileID: 1042351639847296, guid: e025b07b94fd09d4ca9609e5bcf9dce8, type: 2}
-  MaxRooms: 2000
-  Seed: 1003
+  MaxRooms: 25
+  Seed: 1005
   debugImage: {fileID: 0}
 --- !u!156049354 &1179649693
 Grid:
