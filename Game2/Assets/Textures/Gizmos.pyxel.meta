@@ -8,8 +8,8 @@ ScriptedImporter:
     5000000: Gizmos/Gizmos/Rigidbody2D
     6100000: Gizmos/Gizmos/BoxCollider2D
     9500000: Gizmos/Gizmos/Animator
-    11400000: Gizmos/Gizmos/MonoBehaviour-Game.CreatureBehavior
     11400002: Gizmos/Gizmos/MonoBehaviour-YZSync
+    11400004: Gizmos/Gizmos/MonoBehaviour-CreatureBehavior
     21200000: Gizmos/Gizmos/SpriteRenderer
     21300000: Gizmos_sprite_0
     21300002: Gizmos_sprite_1
