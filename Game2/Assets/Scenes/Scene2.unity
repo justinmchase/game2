@@ -198,16 +198,6 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 212290846951167578, guid: 4303bea8ba129ac4399ea24ec0c3f8c1,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300022, guid: 1caa63c78abab3f4d97e5e823ab09af9,
-        type: 3}
-    - target: {fileID: 1802123004188548, guid: 4303bea8ba129ac4399ea24ec0c3f8c1, type: 2}
-      propertyPath: m_Name
-      value: Stairs
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4303bea8ba129ac4399ea24ec0c3f8c1, type: 2}
   m_IsPrefabAsset: 0
@@ -861,16 +851,6 @@ Prefab:
     - target: {fileID: 1530236633416134, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212356548421309062, guid: d53aa77184efaff4c826a55bcee31b2b,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300010, guid: 1caa63c78abab3f4d97e5e823ab09af9,
-        type: 3}
-    - target: {fileID: 1938783255768138, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
-      propertyPath: m_Name
-      value: Stairs
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53aa77184efaff4c826a55bcee31b2b, type: 2}
