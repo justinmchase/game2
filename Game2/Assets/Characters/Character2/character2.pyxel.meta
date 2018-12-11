@@ -1,0 +1,87 @@
+fileFormatVersion: 2
+guid: 21c0a86313f96444aa7853d8d619deff
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: character2/character2
+    400000: character2/character2/Transform
+    2800000: character2_texture
+    5000000: character2/character2/Rigidbody2D
+    6100000: character2/character2/BoxCollider2D
+    7400000: player_run
+    7400002: player_idle_1
+    7400004: player_idle_2
+    7400006: player_run_down
+    7400008: player_run_up
+    7400010: player_attack_wand
+    7400012: player_attack_wand_up
+    7400014: player_attack_wand_down
+    7400016: player_attack_sword
+    7400018: player_attack_sword_down
+    9500000: character2/character2/Animator
+    11400000: character2/character2/MonoBehaviour-CreatureBehavior
+    11400002: character2/character2/MonoBehaviour-YZSync
+    21200000: character2/character2/SpriteRenderer
+    21300000: character2_sprite_0
+    21300002: character2_sprite_1
+    21300004: character2_sprite_2
+    21300006: character2_sprite_3
+    21300008: character2_sprite_4
+    21300010: character2_sprite_5
+    21300012: character2_sprite_6
+    21300014: character2_sprite_7
+    21300016: character2_sprite_8
+    21300018: character2_sprite_9
+    21300020: character2_sprite_10
+    21300022: character2_sprite_11
+    21300024: character2_sprite_12
+    21300026: character2_sprite_13
+    21300028: character2_sprite_14
+    21300030: character2_sprite_15
+    21300032: character2_sprite_16
+    21300034: character2_sprite_17
+    21300036: character2_sprite_18
+    21300038: character2_sprite_19
+    21300040: character2_sprite_20
+    21300042: character2_sprite_21
+    21300044: character2_sprite_22
+    21300046: character2_sprite_23
+    21300048: character2_sprite_24
+    21300050: character2_sprite_25
+    21300052: character2_sprite_26
+    21300054: character2_sprite_27
+    21300056: character2_sprite_28
+    21300058: character2_sprite_29
+    21300060: character2_sprite_30
+    21300062: character2_sprite_31
+    21300064: character2_sprite_32
+    21300066: character2_sprite_33
+    21300068: character2_sprite_34
+    21300070: character2_sprite_35
+    21300072: character2_sprite_36
+    21300074: character2_sprite_37
+    21300076: character2_sprite_38
+    21300078: character2_sprite_39
+    21300080: character2_sprite_41
+    21300082: character2_sprite_42
+    21300084: character2_sprite_43
+    21300086: character2_sprite_44
+    21300088: character2_sprite_45
+    21300090: character2_sprite_46
+    21300092: character2_sprite_49
+    21300094: character2_sprite_50
+    21300096: character2_sprite_51
+    21300098: character2_sprite_52
+    100100000: character2
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0, y: 0}
+  PixelsPerUnit: 16
+  SpriteMaterial: {instanceID: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  AnimatedFramesOnly: 1
+  BodyType: 2
+  MapToAnimatorController: {instanceID: 0}
