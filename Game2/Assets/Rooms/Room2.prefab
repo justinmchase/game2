@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Possibilities:
-  - Probibility: 1
+  - Probibility: 0.25
     prefab: {fileID: 1336860803580938, guid: 8a4fec1b308a8c54b9b614a2acf7c9d8, type: 2}
 --- !u!114 &114802102903884250
 MonoBehaviour:
