@@ -10,4 +10,6 @@ public enum ConnectorDirection {
 public class RoomConnectorBehavior : MonoBehaviour {
 
   public ConnectorDirection Direction;
+  public string Tag;
+
 }

@@ -21,6 +21,7 @@ public class DungeonLevelGenerator : MonoBehaviour {
 
 	public GameObject Level;
 
+	private List<RoomConnectorBehavior> openDoors = new List<RoomConnectorBehavior>();
 	private HashSet<Vector3Int> occupiedSpaces = new HashSet<Vector3Int>();
 
 	private HashSet<Vector3Int> occupiedDoorSpaces = new HashSet<Vector3Int>();
@@ -35,7 +36,7 @@ public class DungeonLevelGenerator : MonoBehaviour {
 		this.Level.transform.parent = this.transform;
 		this.Level.name = "Level - " + seed;
 
-		var openDoors = new List<RoomConnectorBehavior>();
+		this.openDoors.Clear();
 		this.occupiedSpaces.Clear();
 		this.occupiedDoorSpaces.Clear();
 		this.misses.Clear();
@@ -43,26 +44,26 @@ public class DungeonLevelGenerator : MonoBehaviour {
 		{
 			var bail = 0;
 			var i = 0;
-			GrowDungeon(null, this.StartRooms, openDoors);
+			GrowDungeon(null, this.StartRooms);
 
 			i = 0;
-			while(i < this.MaxGrowRooms && bail < 10000) {
+			while(i < this.MaxGrowRooms && bail < 1000) {
 				bail++;
-				var door = openDoors.ElementAt(rand.Next(openDoors.Count));
-				if(GrowDungeon(door, this.GrowRooms, openDoors, 1)) i++;
+				var door = this.openDoors.ElementAt(rand.Next(this.openDoors.Count));
+				if(GrowDungeon(door, this.GrowRooms, 1)) i++;
 			}
 
 			i = 0;
-			while(i < this.MaxEndRooms && bail < 10000) {
+			while(i < this.MaxEndRooms && bail < 1000) {
 				bail++;
-			  var door = openDoors.ElementAt(rand.Next(openDoors.Count));
-				if(GrowDungeon(door, this.EndRooms, openDoors, 1)) i++;
+			  var door = this.openDoors.ElementAt(rand.Next(this.openDoors.Count));
+				if(GrowDungeon(door, this.EndRooms, 1)) i++;
 			}
 
-			while(openDoors.Any() && bail < 10000) {
+			while(this.openDoors.Any() && bail < 1000) {
 				bail++;
-				var door = openDoors.ElementAt(rand.Next(openDoors.Count));
-				GrowDungeon(door, this.Caps, openDoors);
+			  var door = this.openDoors.ElementAt(rand.Next(this.openDoors.Count));
+				if(GrowDungeon(door, this.Caps)) i++;
 			}
 
 			var spawner = this.Level.GetComponentsInChildren<StairsBehavior>().First(s => s.Direction == -direction);
@@ -75,21 +76,22 @@ public class DungeonLevelGenerator : MonoBehaviour {
 		}
 	}
 
-	bool GrowDungeon(RoomConnectorBehavior door, IEnumerable<GameObject> rooms, List<RoomConnectorBehavior> openDoors, int maxRoomConnections = int.MaxValue) {
+	bool GrowDungeon(RoomConnectorBehavior door, IEnumerable<GameObject> rooms, int maxRoomConnections = int.MaxValue) {
 
 		if(door == null){
 			var room = GameObject.Instantiate(rooms.First());
+			room.SetActive(true);
 			room.transform.parent = this.Level.transform;
-			this.UpdateOpenDoors(openDoors, room.GetComponentsInChildren<RoomConnectorBehavior>().ToList());
+			this.UpdateOpenDoors(room.GetComponentsInChildren<RoomConnectorBehavior>().ToList());
 			this.Occupy(room, Vector3.zero);
 			return true;
 		}
 
-		var roomsArray = rooms.ToArray();
 		var matchingConnectors = rooms.SelectMany(r =>{
 				return r
 					.GetComponentsInChildren<RoomConnectorBehavior>()
-					.Where(c => c.Direction == (ConnectorDirection)(((int)door.Direction + 2) % 4));
+					.Where(c => c.Direction == (ConnectorDirection)(((int)door.Direction + 2) % 4))
+					.Where(c => c.Tag != door.Tag);
 		}).ToList();
 
 		var originalMatchingConnetors = matchingConnectors.ToArray();
@@ -101,11 +103,12 @@ public class DungeonLevelGenerator : MonoBehaviour {
 			var d = door.transform.position - selectedConnector.transform.localPosition;
 			if (this.CheckOccupancy(s, d, maxRoomConnections)) {
 				nextRoom = GameObject.Instantiate(s);
+				nextRoom.SetActive(true);
 				nextRoom.transform.position = d;
 				nextRoom.transform.parent = this.Level.transform;
 				
 				var newDoors = nextRoom.GetComponentsInChildren<RoomConnectorBehavior>().ToList();
-				this.UpdateOpenDoors(openDoors, newDoors);
+				this.UpdateOpenDoors(newDoors);
 				this.Occupy(s, d);
 			} else {
 				matchingConnectors.Remove(selectedConnector);
@@ -125,22 +128,21 @@ public class DungeonLevelGenerator : MonoBehaviour {
 		return true;
 	}
 
-	void UpdateOpenDoors(List<RoomConnectorBehavior> openDoors, List<RoomConnectorBehavior> newDoors){
-		foreach(var adoor in openDoors.ToList())
+	void UpdateOpenDoors(List<RoomConnectorBehavior> newDoors){
+		foreach(var adoor in this.openDoors.ToList())
 		foreach(var bdoor in newDoors.ToList()) {
 			if(adoor.transform.position == bdoor.transform.position){
-				openDoors.Remove(adoor);
+				this.openDoors.Remove(adoor);
 				newDoors.Remove(bdoor);
 			}
 		}
 
-		openDoors.AddRange(newDoors);
+		this.openDoors.AddRange(newDoors);
 		foreach(var door in newDoors){
 			this.occupiedDoorSpaces.Add(this.GetDoorEnterPosition(door, door.transform.parent.transform.position));
 			this.occupiedDoorSpaces.Add(this.GetDoorExitPosition(door, door.transform.parent.transform.position));
 		}
 	}
-
 
 	Vector3Int GetDoorExitPosition(RoomConnectorBehavior door, Vector3 destination){
 		Vector3 p = door.transform.localPosition + destination;
