@@ -46,6 +46,8 @@ public class DungeonLevelGenerator : MonoBehaviour
         this.occupiedSpaces.Clear();
         this.occupiedDoorSpaces.Clear();
         this.misses.Clear();
+        this.OpenTiles.Clear();
+        this.ObstructedTiles.Clear();
         try
         {
             var bail = 0;
