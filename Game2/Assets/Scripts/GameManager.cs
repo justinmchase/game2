@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
   public GameObject player;
   public GameObject interactiveObject;
   public GameObject UI;
+  public GameObject Dungeon;
   
   public ViewportRect viewPort;
 
@@ -17,8 +18,17 @@ public class GameManager : MonoBehaviour
 
   public static GameManager current;
 
+  public DungeonLevelGenerator Level {
+    get { return this.Dungeon.GetComponent<DungeonLevelGenerator>(); }
+  }
+
   public void Awake() {
-    GameManager.current = this;
+    if (GameManager.current == null) {
+      GameManager.current = this;
+    } else if (GameManager.current != this) {
+      // Only 1 GameManger per scene.
+      GameObject.Destroy(this);
+    }
   }
 
   public void Update()

@@ -21,7 +21,6 @@ public class EncounterBehavior : MonoBehaviour {
     for (var i = 0; i < this.Possibilities.Length; i++) {
       var p = this.Possibilities[i];
       if (prob < last + p.Probibility) {
-        Debug.Log("Encounter!");
         var obj = GameObject.Instantiate(p.prefab);
         obj.transform.parent = this.transform;
         obj.transform.position  = this.transform.position;

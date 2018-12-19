@@ -12,6 +12,7 @@ public class PlayerHealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.GetComponent<Slider>().value = Game.State.instance.HP;
+		// todo: get HP
+		this.GetComponent<Slider>().value = 1.0f;
 	}
 }

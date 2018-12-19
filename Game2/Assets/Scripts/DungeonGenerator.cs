@@ -8,14 +8,14 @@ public class DungeonGenerator : MonoBehaviour {
 
 	public int Seed;
 	public int[] levels;
-
-	public int currentDungeon = 0;
+	private int currentDungeon = 0;
 
 	void Start() {
 		if (levels == null || levels.Length == 0) {
 			var rand = new System.Random(this.Seed);
 			levels = new int[rand.Next(10, 20)];
-			for (var i = 0; i < levels.Length; i++) {
+            levels[0] = this.Seed;
+			for (var i = 1; i < levels.Length; i++) {
 				levels[i] = rand.Next();
 			}
 		}
