@@ -1,0 +1,87 @@
+fileFormatVersion: 2
+guid: 21c0a86313f96444aa7853d8d619deff
+ScriptedImporter:
+  fileIDToRecycleName:
+    100002: character2_src/character2_src
+    400002: character2_src/character2_src/Transform
+    2800002: character2_src_texture
+    5000002: character2_src/character2_src/Rigidbody2D
+    6100002: character2_src/character2_src/BoxCollider2D
+    7400000: player_run
+    7400002: player_idle_1
+    7400004: player_idle_2
+    7400006: player_run_down
+    7400008: player_run_up
+    7400010: player_attack_wand
+    7400012: player_attack_wand_up
+    7400014: player_attack_wand_down
+    7400016: player_attack_sword
+    7400018: player_attack_sword_down
+    9500002: character2_src/character2_src/Animator
+    11400004: character2_src/character2_src/MonoBehaviour-CreatureBehavior
+    11400006: character2_src/character2_src/MonoBehaviour-YZSync
+    21200002: character2_src/character2_src/SpriteRenderer
+    21300100: character2_src_sprite_0
+    21300102: character2_src_sprite_1
+    21300104: character2_src_sprite_2
+    21300106: character2_src_sprite_3
+    21300108: character2_src_sprite_4
+    21300110: character2_src_sprite_5
+    21300112: character2_src_sprite_6
+    21300114: character2_src_sprite_7
+    21300116: character2_src_sprite_8
+    21300118: character2_src_sprite_9
+    21300120: character2_src_sprite_10
+    21300122: character2_src_sprite_11
+    21300124: character2_src_sprite_12
+    21300126: character2_src_sprite_13
+    21300128: character2_src_sprite_14
+    21300130: character2_src_sprite_15
+    21300132: character2_src_sprite_16
+    21300134: character2_src_sprite_17
+    21300136: character2_src_sprite_18
+    21300138: character2_src_sprite_19
+    21300140: character2_src_sprite_20
+    21300142: character2_src_sprite_21
+    21300144: character2_src_sprite_22
+    21300146: character2_src_sprite_23
+    21300148: character2_src_sprite_24
+    21300150: character2_src_sprite_25
+    21300152: character2_src_sprite_26
+    21300154: character2_src_sprite_27
+    21300156: character2_src_sprite_28
+    21300158: character2_src_sprite_29
+    21300160: character2_src_sprite_30
+    21300162: character2_src_sprite_31
+    21300164: character2_src_sprite_32
+    21300166: character2_src_sprite_33
+    21300168: character2_src_sprite_34
+    21300170: character2_src_sprite_35
+    21300172: character2_src_sprite_36
+    21300174: character2_src_sprite_37
+    21300176: character2_src_sprite_38
+    21300178: character2_src_sprite_39
+    21300180: character2_src_sprite_41
+    21300182: character2_src_sprite_42
+    21300184: character2_src_sprite_43
+    21300186: character2_src_sprite_44
+    21300188: character2_src_sprite_45
+    21300190: character2_src_sprite_46
+    21300192: character2_src_sprite_49
+    21300194: character2_src_sprite_50
+    21300196: character2_src_sprite_51
+    21300198: character2_src_sprite_52
+    100100002: character2_src
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0, y: 0}
+  PixelsPerUnit: 16
+  SpriteMaterial: {instanceID: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  AnimatedFramesOnly: 1
+  BodyType: 2
+  MapToAnimatorController: {instanceID: 0}
