@@ -118,7 +118,7 @@ public class DungeonLevelGenerator : MonoBehaviour
             return r
                 .GetComponentsInChildren<RoomConnectorBehavior>()
                 .Where(c => c.Direction == (ConnectorDirection)(((int)door.Direction + 2) % 4))
-                .Where(c => c.Tag != door.Tag);
+                .Where(c => c.Tag == door.Tag);
         }).ToList();
 
         var originalMatchingConnetors = matchingConnectors.ToArray();
@@ -233,6 +233,11 @@ public class DungeonLevelGenerator : MonoBehaviour
 
         foreach (var tilemap in room.GetComponentsInChildren<Tilemap>())
         {
+            if(tilemap.GetComponent<TilemapRenderer>().sortingLayerName == "Caps")
+            {
+                continue;
+            }
+
             var area = tilemap.cellBounds;
             for (var x = area.xMin; x < area.xMax; x++)
                 for (var y = area.yMin; y < area.yMax; y++)

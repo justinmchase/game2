@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 7cdbe509ba3a4d747aca8e683f656655
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: dungeon1/dungeon1
+    400000: dungeon1/dungeon1/Transform
+    2800000: dungeon1_texture
+    5000000: dungeon1/dungeon1/Rigidbody2D
+    6100000: dungeon1/dungeon1/BoxCollider2D
+    9500000: dungeon1/dungeon1/Animator
+    11400000: dungeon1/dungeon1/MonoBehaviour-CreatureBehavior
+    11400002: dungeon1/dungeon1/MonoBehaviour-YZSync
+    21200000: dungeon1/dungeon1/SpriteRenderer
+    100100000: dungeon1
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 9caf0656bbe06674f8c9d70d34907554, type: 3}
+  Pivot: {x: 0, y: 0}
+  PixelsPerUnit: 16
+  SpriteMaterial: {instanceID: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 1, y: 1}
+  AnimatedFramesOnly: 1
+  BodyType: 2
+  MapToAnimatorController: {instanceID: 0}
