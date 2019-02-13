@@ -90,7 +90,9 @@ public class DungeonLevelGenerator : MonoBehaviour
                 Debug.Log("bailed dungeon generation");
             }
 
-            var spawner = this.Level.GetComponentsInChildren<StairsBehavior>().First(s => s.Direction == -direction);
+            var spawner = this.Level
+                .GetComponentsInChildren<StairsBehavior>()
+                .First(s => s.Direction == -direction);
             spawner.Entered = true;
             GameManager.current.player.transform.position = spawner.transform.position;
         }
