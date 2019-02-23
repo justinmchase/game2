@@ -50,7 +50,7 @@ public class DungeonLevelGenerator : MonoBehaviour
         this.ObstructedTiles.Clear();
         try
         {
-            var bail = 0;
+            var bail = -1000 * this.MaxGrowRooms;
             var i = 0;
             GrowDungeon(null, this.StartRooms);
 
@@ -59,7 +59,7 @@ public class DungeonLevelGenerator : MonoBehaviour
             {
                 bail++;
                 var door = this.openDoors.ElementAt(rand.Next(this.openDoors.Count));
-                if (GrowDungeon(door, this.GrowRooms, 1)) i++;
+                if (GrowDungeon(door, this.GrowRooms, 2)) i++;
             }
 
             i = 0;
@@ -85,7 +85,7 @@ public class DungeonLevelGenerator : MonoBehaviour
                 if (GrowDungeon(door, this.Caps)) i++;
             }
 
-            if(bail == 1000)
+            if(bail >= 1000)
             {
                 Debug.Log("bailed dungeon generation");
             }

@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Direction: 3
-  Tag: Hall
+  Tag: B
 --- !u!114 &114371794992606034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Direction: 1
-  Tag: Hall
+  Tag: B
 --- !u!114 &114814417050375304
 MonoBehaviour:
   m_ObjectHideFlags: 1
