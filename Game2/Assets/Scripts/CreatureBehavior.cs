@@ -133,8 +133,8 @@ public class CreatureBehavior : MonoBehaviour
             var game = GameManager.current;
             var level = game.Level;
             var path = Game.Algorithms.AStar.GetPath(
-                level.OpenTiles,
-                level.ObstructedTiles,
+                level.ctx.OpenTiles,
+                level.ctx.ObstructedTiles,
                 Vector3Int.FloorToInt(p),
                 this.Target.Value);
 
