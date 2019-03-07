@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.Scripts.DungeonGenerator
 {
     [Serializable]
-    public class CapPipelineStep : ScriptableObject, IDungeonGeneratorPipelineStep
+    public class CapPipelineStep : IDungeonGeneratorPipelineStep
     {
         int bail = 0;
 

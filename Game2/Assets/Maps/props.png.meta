@@ -3,6 +3,9 @@ guid: f7b6e0e1679b5364e858cdafea81b288
 TextureImporter:
   fileIDToRecycleName:
     21300000: props_0
+    21300002: props_1
+    21300004: props_2
+    21300006: props_3
   externalObjects: {}
   serializedVersion: 6
   mipmaps:
@@ -100,6 +103,66 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3b5ee3e8fa885054c86b27d2a8f59a8b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 81
+        width: 8
+        height: 46
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc2745e2bf270846ae65125f98b688e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 81
+        width: 8
+        height: 46
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd21d7385b9c12b43b041fb98914ff88
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 81
+        width: 8
+        height: 46
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b78959e89d52b1148877ffe49e146ff5
       vertices: []
       indices: 
       edges: []

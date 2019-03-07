@@ -136,9 +136,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021113396, y: 0.33567184}
+  m_Offset: {x: 0.0013632178, y: 0.20235842}
   serializedVersion: 2
-  m_Radius: 0.241027
+  m_Radius: 0.3052153
 --- !u!95 &95065387481039898
 Animator:
   serializedVersion: 3
@@ -173,6 +173,7 @@ MonoBehaviour:
   IsMoving: 0
   IsMovingRight: 0
   IsMovingLeft: 0
+  Path: []
   MoveDirection: {x: 0, y: 0, z: 0}
   IsRunning: 0
   interactiveObject: {fileID: 0}
@@ -212,7 +213,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1709358779
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300096, guid: 6e3a10189bdfbfb4292a68cfb2c72266, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -258,7 +259,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1709358779
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300096, guid: 6e3a10189bdfbfb4292a68cfb2c72266, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -304,7 +305,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1709358779
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300028, guid: 6e3a10189bdfbfb4292a68cfb2c72266, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -316,4 +317,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
