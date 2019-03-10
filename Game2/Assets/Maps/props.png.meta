@@ -7,7 +7,7 @@ TextureImporter:
     21300004: props_2
     21300006: props_3
   externalObjects: {}
-  serializedVersion: 6
+  serializedVersion: 7
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -102,7 +102,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b5ee3e8fa885054c86b27d2a8f59a8b
+      spriteID: d5895e9c69cb8fb48a9f5294b657c602
       vertices: []
       indices: 
       edges: []
@@ -111,10 +111,10 @@ TextureImporter:
       name: props_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 81
+        x: 84
+        y: 64
         width: 8
-        height: 46
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cc2745e2bf270846ae65125f98b688e
+      spriteID: 6188fcb8d4cf5d44e8af92eab2f957ad
       vertices: []
       indices: 
       edges: []
@@ -131,10 +131,10 @@ TextureImporter:
       name: props_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 81
-        width: 8
-        height: 46
+        x: 96
+        y: 80
+        width: 16
+        height: 33
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,27 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd21d7385b9c12b43b041fb98914ff88
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: props_3
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 81
-        width: 8
-        height: 46
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b78959e89d52b1148877ffe49e146ff5
+      spriteID: 7257884a28254cc4fb12ea33a7cd749a
       vertices: []
       indices: 
       edges: []
@@ -176,6 +156,8 @@ TextureImporter:
     edges: []
     weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
