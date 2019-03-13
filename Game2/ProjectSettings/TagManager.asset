@@ -47,9 +47,12 @@ TagManager:
   - name: Walls
     uniqueID: 1309363083
     locked: 0
-  - name: Caps
-    uniqueID: 3959347895
-    locked: 0
   - name: Objects
     uniqueID: 2585608517
+    locked: 0
+  - name: Overlay
+    uniqueID: 942368685
+    locked: 0
+  - name: Caps
+    uniqueID: 3959347895
     locked: 0

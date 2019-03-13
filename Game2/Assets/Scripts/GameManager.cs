@@ -73,16 +73,6 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<CreatureBehavior>().IsRunning = Input.GetKey(KeyCode.LeftShift);
             player.GetComponent<CreatureBehavior>().MoveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-
-            var cb = player.GetComponent<CreatureBehavior>();
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                cb.Interact(true);
-            }
-            if (Input.GetKeyUp(KeyCode.Return))
-            {
-                cb.Interact(false);
-            }
         }
     }
 }

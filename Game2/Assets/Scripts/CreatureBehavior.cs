@@ -91,15 +91,7 @@ public class CreatureBehavior : MonoBehaviour
         var p = this.transform.position + velocity;
         this._rigidbody.MovePosition(p);
     }
-
-    public void Interact(bool engage)
-    {
-        if (this.interactiveObject != null)
-        {
-            this.interactiveObject.SendMessage("Interact", engage);
-        }
-    }
-
+    
     public void Attack()
     {
         if (this.AttackFocus != null)

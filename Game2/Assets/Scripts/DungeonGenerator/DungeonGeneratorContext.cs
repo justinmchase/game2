@@ -65,7 +65,8 @@ namespace Assets.Scripts.DungeonGenerator
 
             foreach (var tilemap in room.GetComponentsInChildren<Tilemap>())
             {
-                if (tilemap.GetComponent<TilemapRenderer>().sortingLayerName == "Caps")
+                var sortingLayerName = tilemap.GetComponent<TilemapRenderer>().sortingLayerName;
+                if (sortingLayerName == "Caps" || sortingLayerName == "Overlay")
                 {
                     continue;
                 }
