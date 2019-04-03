@@ -7,7 +7,7 @@ Game 2 is a top-down action game where you build magic circuits in the world to 
 
 ## Magic Circuits
 
-Magic circuits are constructed by placing magiparts into the world.  Magiparts are analagous to real-world analog electroinic parts, like resistors and capacitors. Magiparts are connected by Trace.  Trace is analogous to wires in real-world electronics. Connecting a part to trace that is carrying more mana, or an incompatable mana type will cause the part to take damage.  
+Magic circuits are constructed by placing magiparts into the world.  Magiparts are analagous to real-world analog electronic parts, like resistors and capacitors. Magiparts are connected by Trace.  Trace is analogous to wires in real-world electronics. Connecting a part to trace that is carrying more mana, or an incompatable mana type will cause the part to take damage.  
 
 ### Magiparts List
 

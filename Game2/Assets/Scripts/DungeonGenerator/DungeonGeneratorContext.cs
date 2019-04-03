@@ -84,9 +84,18 @@ namespace Assets.Scripts.DungeonGenerator
                                 {
                                     return false;
                                 }
-                                if (occupiedDoorSpaces.Contains(tileDestination) && !newDoors.Any(d => d.GetEnterPosition(destination) == tileDestination))
+
+                                if (occupiedDoorSpaces.Contains(tileDestination))
                                 {
-                                    return false;
+                                    var existingDoor = openDoors.First(od => od.GetExitPosition(od.transform.parent.transform.position) == tileDestination);
+                                    var newDoor = newDoors
+                                        .Where(d => d.Tag == existingDoor.Tag)
+                                        .Any(d => d.GetEnterPosition(destination) == tileDestination);
+
+                                    if (!newDoor)
+                                    {
+                                        return false;
+                                    }
                                 }
                             }
                         }

@@ -29,6 +29,11 @@ namespace Assets.Scripts.DungeonGenerator
                 var door = ctx.openDoors.GetRandomItem(ctx.rand);
                 if (ctx.GrowDungeon(door, this.Rooms, 2)) i++;
             }
+
+            if(bail < 1000)
+            {
+                Debug.Log("Bail GrowRoomsPipelineStep");
+            }
         }
     }
 }

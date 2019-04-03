@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
             // Only 1 GameManger per scene.
             GameObject.Destroy(this);
         }
+
+    }
+
+    public void Start()
+    {
+        this.StartCoroutine(this.UpdateCircuits());
     }
 
     public void Update()
@@ -73,6 +79,20 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<CreatureBehavior>().IsRunning = Input.GetKey(KeyCode.LeftShift);
             player.GetComponent<CreatureBehavior>().MoveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        }
+    }
+
+    public IEnumerator UpdateCircuits()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+
+            var manaCrystals = GameObject.FindObjectsOfType<ManaCrystalBehavior>();
+            foreach (var crystal in manaCrystals)
+            {
+                crystal.Tick();
+            }
         }
     }
 }

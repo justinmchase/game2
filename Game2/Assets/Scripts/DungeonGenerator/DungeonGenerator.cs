@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Linq;
+using System;
 
 public class DungeonGenerator : MonoBehaviour {
 
@@ -12,7 +13,13 @@ public class DungeonGenerator : MonoBehaviour {
 
 	void Start() {
 		if (levels == null || levels.Length == 0) {
-			var rand = new System.Random(this.Seed);
+            if (this.Seed == 0)
+            {
+                var r = new System.Random((int)DateTime.Now.ToFileTime());
+                this.Seed = r.Next();
+            }
+
+            var rand = new System.Random(this.Seed);
 			levels = new int[rand.Next(10, 20)];
             levels[0] = this.Seed;
 			for (var i = 1; i < levels.Length; i++) {
