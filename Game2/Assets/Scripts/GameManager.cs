@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject Dungeon;
 
     public ViewportRect viewPort;
+    private List<ITickable> tickables = new List<ITickable>();
 
     public int nextId = 0;
 
@@ -21,6 +22,14 @@ public class GameManager : MonoBehaviour
     public DungeonLevelGenerator Level
     {
         get { return this.Dungeon.GetComponent<DungeonLevelGenerator>(); }
+    }
+
+    public void Register(ITickable tickable)
+    {
+        if (!this.tickables.Contains(tickable))
+        {
+            this.tickables.Add(tickable);
+        }
     }
 
     public void Awake()
@@ -88,10 +97,11 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
 
-            var manaCrystals = GameObject.FindObjectsOfType<ManaCrystalBehavior>();
-            foreach (var crystal in manaCrystals)
+            this.tickables.RemoveAll(t => t == null);
+
+            foreach (var tickable in this.tickables)
             {
-                crystal.Tick();
+                tickable.Tick();
             }
         }
     }
