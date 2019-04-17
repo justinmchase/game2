@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManaOutputBehavior : MonoBehaviour {
+public class LeylineBehavior : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public List<LeylineConnectorBehavior> Connectors;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

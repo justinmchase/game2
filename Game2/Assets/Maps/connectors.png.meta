@@ -1,16 +1,12 @@
 fileFormatVersion: 2
-guid: f7b6e0e1679b5364e858cdafea81b288
+guid: c08bc330197ae0e4390a4e7b58ebb3ad
 TextureImporter:
   fileIDToRecycleName:
-    21300000: props_0
-    21300002: props_1
-    21300004: props_2
-    21300006: props_3
-    21300008: props_4
-    21300010: props_5
-    21300012: props_6
-    21300014: props_7
-    21300016: props_8
+    21300000: connectors_0
+    21300002: connectors_1
+    21300004: connectors_2
+    21300006: connectors_3
+    21300008: connectors_4
   externalObjects: {}
   serializedVersion: 6
   mipmaps:
@@ -93,181 +89,101 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: props_0
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 84
-        width: 32
-        height: 39
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c302442623c3d2549b1c11d3dad72e7f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: props_1
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 64
-        width: 8
-        height: 62
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c1a33b6242278e46a07fbb88b099778
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: props_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 80
-        width: 16
-        height: 33
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 081f95e45b4317942b58b8e4bfff58e2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: props_3
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 81
-        width: 23
-        height: 31
-      alignment: 9
-      pivot: {x: 0.49992403, y: 0.17415348}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 541cf7966741b0a479dd9a991b92ca4a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: props_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 15
-        height: 15
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6f487db97d89e246bac05754eea7da7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: props_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 15
-        height: 15
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4ed1bb43967e53419e1b872602f994c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: props_6
+      name: connectors_0
       rect:
         serializedVersion: 2
         x: 32
-        y: 48
-        width: 15
-        height: 15
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d06987670027634e86406870bc5ea91
+      spriteID: 92011881cdf67054ca1dbcf0e7b08096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: props_7
+      name: connectors_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa2e70988eac1e2448b25bcb8d447b38
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: connectors_2
       rect:
         serializedVersion: 2
         x: 48
-        y: 48
-        width: 15
-        height: 15
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        y: 96
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2666f93b1b410a24284f2fd948a860fd
+      spriteID: c7bf3195b8cc95b4ebda406bfd84dc50
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: props_8
+      name: connectors_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 48
-        width: 15
-        height: 15
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0df8f66dc0ba12e4397eec7c5f6c74bc
+      spriteID: a4338f02019c0924fb7f176069d4df69
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: connectors_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6c221057cbaad941a0e9639ad9a2d26
       vertices: []
       indices: 
       edges: []
@@ -275,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b242c46408cd2b948a26b3a0b220bcee
+    spriteID: 6f285ed8f0f79494fbf90287ad16f413
     vertices: []
     indices: 
     edges: []

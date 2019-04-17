@@ -11,10 +11,10 @@ namespace Assets.Scripts.DungeonGenerator
         public static Vector3Int GetExitPosition(this RoomConnectorBehavior door, Vector3 destination)
         {
             Vector3 p = door.transform.localPosition + destination;
-            p += door.Direction == ConnectorDirection.N ? new Vector3(0, 0.5f, 0) :
-                     door.Direction == ConnectorDirection.E ? new Vector3(0.5f, 0, 0) :
-                     door.Direction == ConnectorDirection.S ? new Vector3(0, -0.5f, 0) :
-                     door.Direction == ConnectorDirection.W ? new Vector3(-0.5f, 0, 0) :
+            p += door.Direction == Direction.N ? new Vector3(0, 0.5f, 0) :
+                     door.Direction == Direction.E ? new Vector3(0.5f, 0, 0) :
+                     door.Direction == Direction.S ? new Vector3(0, -0.5f, 0) :
+                     door.Direction == Direction.W ? new Vector3(-0.5f, 0, 0) :
                      new Vector3(0, 0, 0);
 
             return Vector3Int.RoundToInt(p);
@@ -23,10 +23,10 @@ namespace Assets.Scripts.DungeonGenerator
         public static Vector3Int GetEnterPosition(this RoomConnectorBehavior door, Vector3 destination)
         {
             Vector3 p = door.transform.localPosition + destination;
-            p += door.Direction == ConnectorDirection.N ? new Vector3(0, -0.5f, 0) :
-                     door.Direction == ConnectorDirection.E ? new Vector3(-0.5f, 0, 0) :
-                     door.Direction == ConnectorDirection.S ? new Vector3(0, 0.5f, 0) :
-                     door.Direction == ConnectorDirection.W ? new Vector3(0.5f, 0, 0) :
+            p += door.Direction == Direction.N ? new Vector3(0, -0.5f, 0) :
+                     door.Direction == Direction.E ? new Vector3(-0.5f, 0, 0) :
+                     door.Direction == Direction.S ? new Vector3(0, 0.5f, 0) :
+                     door.Direction == Direction.W ? new Vector3(0.5f, 0, 0) :
                      new Vector3(0, 0, 0);
 
             return Vector3Int.RoundToInt(p);

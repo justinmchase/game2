@@ -186,7 +186,7 @@ namespace Assets.Scripts.DungeonGenerator
             {
                 return r
                     .GetComponentsInChildren<RoomConnectorBehavior>()
-                    .Where(c => c.Direction == (ConnectorDirection)(((int)door.Direction + 2) % 4))
+                    .Where(c => c.Direction == (Direction)(((int)door.Direction + 2) % 4))
                     .Where(c => c.Tag == door.Tag);
             }).ToList();
 
