@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Extensions {
-
-	public static Vector3 XY(this Vector3 v){
-		return new Vector3(v.x, v.y, 0f);
-	}
-}
-
 public class ChasePlayer : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

@@ -5,7 +5,6 @@ using UnityEngine;
 public class LeylineOutputBehavior : LeylineBehavior
 {
 
-    public Direction Direction;
 
 
     // Use this for initialization
