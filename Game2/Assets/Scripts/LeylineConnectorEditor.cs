@@ -14,9 +14,9 @@ public class LeylineConnectorEditor : Editor
         DrawDefaultInspector();
 
         LeylineConnectorBehavior ll = (LeylineConnectorBehavior)target;
-        if (GUILayout.Button("Init"))
+        if (GUILayout.Button("Orient"))
         {
-            ll.Init();
+            ll.Orient();
         }
     }
 }

@@ -4,39 +4,23 @@ using UnityEngine;
 
 public class LeylineConnectorBehavior : MonoBehaviour {
 
-
     public LeylineBehavior Src;
     public LeylineBehavior Dst;
 
-    public Direction Direction;
-
-    public GameObject lineVisual;
-
+    private Direction Direction;
+    
     private void Awake()
     {
-        
-
-        if (this.lineVisual == null) return;
-
-        this.Init();
-
+        //this.Orient();
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void Init()
+    public void Orient()
     {
+        if (Dst == null || Src == null) return;
+
         this.Direction = (Dst.transform.position - Src.transform.position).ToDirection();
 
-        this.transform.position = (Src.transform.position + Dst.transform.position)/2;
+        this.transform.position = (Src.transform.position + Dst.transform.position) / 2.0f;
         
         switch (this.Direction)
         {

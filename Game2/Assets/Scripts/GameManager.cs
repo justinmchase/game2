@@ -88,6 +88,8 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<CreatureBehavior>().IsRunning = Input.GetKey(KeyCode.LeftShift);
             player.GetComponent<CreatureBehavior>().MoveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+            
+
         }
     }
 
