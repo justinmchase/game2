@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeylineTool : MonoBehaviour {
+public class LeylineTool : Tool {
 
     public GameObject LeylinePrefab;
     public GameObject ConnectorPrefab;
-
 
     private GameObject LeylineContainer;
     private GameObject PreviousLeyline;
@@ -62,6 +61,11 @@ public class LeylineTool : MonoBehaviour {
                 connector.GetComponent<LeylineConnectorBehavior>().Src = src.GetComponent<LeylineBehavior>();
                 connector.GetComponent<LeylineConnectorBehavior>().Dst = dst.GetComponent<LeylineBehavior>();
                 connector.GetComponent<LeylineConnectorBehavior>().Orient();
+
+                src.GetComponent<LeylineBehavior>().Connectors.Add(connector);
+                dst.GetComponent<LeylineBehavior>().Connectors.Add(connector);
+
+
             }
         }
 
