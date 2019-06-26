@@ -8,6 +8,8 @@ public class ManaCrystalBehavior : MonoBehaviour, ITickable {
 
     public int FillRate = 10;
 
+    private LeylineNode output;
+
     public void Tick()
     {
         if (this.active)
@@ -25,7 +27,11 @@ public class ManaCrystalBehavior : MonoBehaviour, ITickable {
 	void Start ()
     {
         GameManager.current.Register(this);
-	}
+        var mm = GameManager.current.GetComponent<ManaManager>();
+        this.output = this.transform.Find("Output").GetComponent<LeylineNode>();
+        mm.AddNode(this.output);
+        this.output.Potential.Blue = 1;
+    }
 	
     public void Activate()
     {

@@ -2,16 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeylineConnectorBehavior : MonoBehaviour {
+public class LeylineConnectorBehavior : MonoBehaviour, ILeyline
+{
 
     public LeylineBehavior Src;
     public LeylineBehavior Dst;
 
     private Direction Direction;
-    
+
+    public Vector3Int p0
+    {
+        get
+        {
+            return this.Src.transform.position.ToInt();
+        }
+    }
+
+    public Vector3Int p1
+    {
+        get { return this.Dst.transform.position.ToInt(); }
+    }
+
     private void Awake()
     {
         //this.Orient();
+    }
+
+    private void Start()
+    {
+        var mm = GameManager.current.GetComponent<ManaManager>();
+        mm.AddLeyline(this);
     }
 
     public void Orient()

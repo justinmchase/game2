@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class ToolBeltPanelBehavior : MonoBehaviour {
 
+    public GameObject Selector;
+
     public ToolBeltBehavior Player;
     public GameObject ToolButton;
     public Transform[] Tools;
     public int NumSlots;
+
     private int ActiveTool;
+    private Transform _selector;
 
 	// Use this for initialization
 	void Start ()
@@ -24,11 +28,25 @@ public class ToolBeltPanelBehavior : MonoBehaviour {
         }
 
         this.UpdateCurrentTool();
+
+        if (this.Selector != null)
+        {
+            this._selector = GameObject.Instantiate(this.Selector).transform;
+        }
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (this.ActiveTool != Player.CurrentTool) this.UpdateCurrentTool();
+        if (this._selector != null)
+        {
+            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            position.z = 0;
+            position.x = Mathf.Floor(position.x);
+            position.y = Mathf.Floor(position.y);
+            this._selector.position = position;
+        }
 	}
 
     private void UpdateCurrentTool()

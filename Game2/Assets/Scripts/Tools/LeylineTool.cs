@@ -64,8 +64,6 @@ public class LeylineTool : Tool {
 
                 src.GetComponent<LeylineBehavior>().Connectors.Add(connector);
                 dst.GetComponent<LeylineBehavior>().Connectors.Add(connector);
-
-
             }
         }
 
@@ -87,8 +85,6 @@ public class LeylineTool : Tool {
             position.y = Mathf.Floor(position.y) + 0.5f;
 
             var distance = Vector3.Distance(position, PreviousMousePosition);
-
-
             var xmotion = new Vector3(position.x, PreviousMousePosition.y, PreviousMousePosition.z);
 
             while (PreviousMousePosition != xmotion)

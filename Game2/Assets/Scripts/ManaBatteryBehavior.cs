@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class ManaBatteryBehavior : MonoBehaviour, ITickable {
 
     public Animator animator;
 
+    private LeylineNode input, output;
+
     public void Tick()
     {
         if (this.active)
@@ -22,15 +25,40 @@ public class ManaBatteryBehavior : MonoBehaviour, ITickable {
                 var mana = Mathf.Min(player.Mana, this.MaxMana - this.Mana, this.FillRate);
                 player.Mana -= mana;
                 this.Mana += mana;
-
-                this.animator.SetFloat("Fill Percent", (float)this.Mana / (float)this.MaxMana);
             }
         }
+
+        if (this.Mana > 0 && this.output.Charged)
+        {
+            this.Mana = Math.Max(0, this.Mana - this.FillRate);
+        }
+
+        if (this.Mana < this.MaxMana && this.input.Charged)
+        {
+            this.Mana = Math.Min(this.MaxMana, this.Mana + this.FillRate);
+        }
+
+        if (this.Mana > 0)
+        {
+            this.output.Potential.Blue = 1;
+        }
+        else
+        {
+            this.output.Potential.Blue = 0;
+        }
+
+        this.animator.SetFloat("Fill Percent", (float)this.Mana / (float)this.MaxMana);
     }
 
     private void Start()
     {
-        GameManager.current.Register(this);   
+        GameManager.current.Register(this);
+        var mm = GameManager.current.GetComponent<ManaManager>();
+        this.input = this.transform.Find("Input").GetComponent<LeylineNode>();
+        this.output = this.transform.Find("Output").GetComponent<LeylineNode>();
+        mm.AddNode(this.input);
+        mm.AddNode(this.output);
+        this.input.Potential.Blue = -1;
     }
 
     public void Activate()

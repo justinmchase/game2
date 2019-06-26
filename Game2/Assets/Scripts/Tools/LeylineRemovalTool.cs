@@ -17,7 +17,7 @@ public class LeylineRemovalTool : Tool {
         if (Input.GetMouseButton(0))
         {
             var layerMask = LayerMask.GetMask("Leyline");
-            var colliders =  Physics2D.OverlapCircleAll(position, 0.1f, layerMask);
+            var colliders =  Physics2D.OverlapCircleAll(position, 0.5f, layerMask);
             foreach(var c in colliders)
             {
                 if (c.GetComponent<LeylineConnectorBehavior>())

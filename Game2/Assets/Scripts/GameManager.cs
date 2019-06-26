@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
             // Only 1 GameManger per scene.
             GameObject.Destroy(this);
         }
-
     }
 
     public void Start()
@@ -73,12 +72,6 @@ public class GameManager : MonoBehaviour
 
             var velocity = target - current;
             Camera.main.transform.position = Vector3.SmoothDamp(current, target, ref velocity, Time.deltaTime);
-    
-            //var radiusY = Camera.main.orthographicSize + 2;
-            //var radiusX = radiusY * Camera.main.aspect + 2;
-            //var centerX = Camera.main.transform.position.x;
-            //var centerY = Camera.main.transform.position.y;
-            //this.viewPort = ViewportRect.FromCenterRadius(centerX, centerY, radiusX, radiusY);
         }
     }
 
@@ -88,8 +81,6 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<CreatureBehavior>().IsRunning = Input.GetKey(KeyCode.LeftShift);
             player.GetComponent<CreatureBehavior>().MoveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-            
-
         }
     }
 

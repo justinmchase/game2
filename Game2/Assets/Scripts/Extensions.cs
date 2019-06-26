@@ -26,4 +26,9 @@ public static class Extensions
     {
         return (src - dst).ToDirection();
     }
+
+    public static Vector3Int ToInt(this Vector3 src)
+    {
+        return Vector3Int.FloorToInt(src);
+    }
 }
