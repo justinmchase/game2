@@ -2195,7 +2195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cfe935549ce0854096c0ac03c327f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Connectors: []
+  ConnectorPrefab: {fileID: 0}
+  DotPrefab: {fileID: 0}
 --- !u!114 &591823546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2217,7 +2218,18 @@ MonoBehaviour:
     Brown: 0
     White: 0
     Black: 0
-  Charged: 0
+    X: 0
+  Charged:
+    Red: 0
+    Blue: 0
+    Yellow: 0
+    Orange: 0
+    Purple: 0
+    Green: 0
+    Brown: 0
+    White: 0
+    Black: 0
+    X: 0
 --- !u!1 &619909606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,7 +2546,18 @@ MonoBehaviour:
     Brown: 0
     White: 0
     Black: 0
-  Charged: 0
+    X: 0
+  Charged:
+    Red: 0
+    Blue: 0
+    Yellow: 0
+    Orange: 0
+    Purple: 0
+    Green: 0
+    Brown: 0
+    White: 0
+    Black: 0
+    X: 0
 --- !u!4 &754256377
 Transform:
   m_ObjectHideFlags: 0
@@ -2562,7 +2585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cfe935549ce0854096c0ac03c327f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Connectors: []
+  ConnectorPrefab: {fileID: 0}
+  DotPrefab: {fileID: 0}
 --- !u!1001 &777422447
 Prefab:
   m_ObjectHideFlags: 0
@@ -5451,4 +5475,15 @@ MonoBehaviour:
     Brown: 0
     White: 0
     Black: 0
-  Charged: 0
+    X: 0
+  Charged:
+    Red: 0
+    Blue: 0
+    Yellow: 0
+    Orange: 0
+    Purple: 0
+    Green: 0
+    Brown: 0
+    White: 0
+    Black: 0
+    X: 0

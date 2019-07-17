@@ -21,6 +21,16 @@ public static class Extensions
         if (v.x < -epsilon) return Direction.W;
         return default(Direction);
     }
+    
+    public static Direction ToDirection(this Vector3Int v)
+    {
+        float epsilon = 0.2f;
+        if (v.y > epsilon) return Direction.N;
+        if (v.y < -epsilon) return Direction.S;
+        if (v.x > epsilon) return Direction.E;
+        if (v.x < -epsilon) return Direction.W;
+        return default(Direction);
+    }
 
     public static Direction DirTo(this Vector3 src, Vector3 dst)
     {
@@ -30,5 +40,15 @@ public static class Extensions
     public static Vector3Int ToInt(this Vector3 src)
     {
         return Vector3Int.FloorToInt(src);
+    }
+
+    public static TValue SafeGetValue<TKey, TValue>(this Dictionary<TKey, TValue> d, TKey k)
+    {
+        var v = default(TValue);
+        if(d.TryGetValue(k, out v))
+        {
+            return v;
+        }
+        return v;
     }
 }

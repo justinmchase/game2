@@ -1,114 +1,147 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class LeylineTool : Tool {
 
     public GameObject LeylinePrefab;
-    public GameObject ConnectorPrefab;
+    public GameObject LeylineContainer;
 
-    private GameObject LeylineContainer;
-    private GameObject PreviousLeyline;
     private Vector3 PreviousMousePosition;
 
-    private Vector3 NotSet = new Vector3(float.NaN, float.NaN, float.NaN);
+    private List<Vector3> points = new List<Vector3>();
 
     private void Awake()
     {
-        PreviousMousePosition = NotSet;
         this.LeylineContainer = GameObject.Find("Leylines");
     }
 
-    void PlaceLeyline(Vector3 position)
+    void StartLeyline(Vector3 position)
     {
+        Debug.Log("StartLeyline:" + position);
+
+        this.points.Clear();
+        this.points.Add(position);
+
+        var pathRenderer = this.GetComponent<PathRendererBehavior>();
+        pathRenderer.Path = this.points.ToArray();
+        pathRenderer.UpdateChildren();
+    }
+
+    void DragLeyline(Vector3 position)
+    {
+        var count = this.points.Count();
+        if (count >= 2
+            && (points[count - 2].ToInt() == position.ToInt())){
+            this.points.RemoveAt(count - 1);
+        }
+        else
+        { 
+            this.points.Add(position);
+        }
+
+        var pathRenderer = this.GetComponent<PathRendererBehavior>();
+        pathRenderer.Path = this.points.ToArray();
+        pathRenderer.UpdateChildren();
+    }
+
+    void EndLeyline()
+    {
+
+    }
+    
+
+    bool IsValid
+    {
+        get
+        {
+
+            foreach (var p in this.points)
+            {
+                if (GameManager.current.GetComponent<ManaManager>().IsOccupied(p))
+                {
+                    return false;
+                }
+            }
+
+            if (this.points.Count() != this.points.Select(p => p.ToInt()).Distinct().Count())
+            {
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update ()
+    {
+        var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         position.z = 0;
         position.x = Mathf.Floor(position.x) + 0.5f;
         position.y = Mathf.Floor(position.y) + 0.5f;
 
-        var name = string.Format("l_{0}_{1}", position.x, position.y);
+        //..
 
-        var ll = GameObject.Find(name);
-
-        if (ll == null)
+        if (Input.GetMouseButton(0) && this.points.Count == 0)
         {
-            ll = GameObject.Instantiate(LeylinePrefab);
-            ll.transform.position = position;
-            ll.transform.parent = LeylineContainer.transform;
-            ll.name = name;
+            StartLeyline(position);
         }
-
-        if (this.PreviousLeyline != null && this.PreviousLeyline != ll)
+        else if (Input.GetMouseButton(0) && this.points.Count > 0)
         {
-            var src = this.PreviousLeyline;
+            Debug.Log("LeyLineDrag");
+            var last = this.points[this.points.Count - 1];
+            var distance = Vector3.Distance(position, last);
+            var xmotion = new Vector3(position.x, last.y, 0f);
 
-            var dst = ll;
 
-            if (string.Compare(src.name, ll.name) > 0)
+            while (Vector3.Distance(last, xmotion) >= 1.0f)
             {
-                var tmp = src;
-                src = dst;
-                dst = tmp;
+                last = Vector3.MoveTowards(last, xmotion, 1f);
+                DragLeyline(last);
             }
 
-            var cn = string.Format("c_{0}_{1}", src.name, dst.name);
+            var ymotion = new Vector3(last.x, position.y, 0f);
 
-            var connector = GameObject.Find(cn);
-            if (connector == null)
+            while (Vector3.Distance(last, ymotion) >= 1.0f)
             {
-                connector = GameObject.Instantiate(ConnectorPrefab);
-                connector.name = cn;
-                connector.transform.parent = LeylineContainer.transform;
-                connector.GetComponent<LeylineConnectorBehavior>().Src = src.GetComponent<LeylineBehavior>();
-                connector.GetComponent<LeylineConnectorBehavior>().Dst = dst.GetComponent<LeylineBehavior>();
-                connector.GetComponent<LeylineConnectorBehavior>().Orient();
+                last = Vector3.MoveTowards(last, ymotion, 1f);
+                DragLeyline(last);
+            }
 
-                src.GetComponent<LeylineBehavior>().Connectors.Add(connector);
-                dst.GetComponent<LeylineBehavior>().Connectors.Add(connector);
+            if (this.IsValid)
+            {
+                foreach (var c in this.GetComponentsInChildren<SpriteRenderer>())
+                {
+                    c.color = Color.white;
+                }
+            }
+            else
+            {
+                foreach (var c in this.GetComponentsInChildren<SpriteRenderer>())
+                {
+                    c.color = Color.red;
+                }
             }
         }
-
-
-        this.PreviousLeyline = ll;
-    }
-
-    // Update is called once per frame
-    void Update () {
-
-
-        var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Input.GetMouseButton(0) && PreviousMousePosition != NotSet)
-        {
-
-            position.z = 0;
-            position.x = Mathf.Floor(position.x) + 0.5f;
-            position.y = Mathf.Floor(position.y) + 0.5f;
-
-            var distance = Vector3.Distance(position, PreviousMousePosition);
-            var xmotion = new Vector3(position.x, PreviousMousePosition.y, PreviousMousePosition.z);
-
-            while (PreviousMousePosition != xmotion)
-            {
-                PreviousMousePosition = Vector3.MoveTowards(PreviousMousePosition, xmotion, 1f);
-                PlaceLeyline(PreviousMousePosition);
-            }
-
-            var ymotion = new Vector3(PreviousMousePosition.x, position.y, PreviousMousePosition.z);
-
-            while (PreviousMousePosition != ymotion)
-            {
-                PreviousMousePosition = Vector3.MoveTowards(PreviousMousePosition, ymotion, 1f);
-                PlaceLeyline(PreviousMousePosition);
-            }
-
-        }
-
-        PreviousMousePosition = position;
 
         if (Input.GetMouseButtonUp(0))
         {
-            this.PreviousLeyline = null;
-        }
 
+            if (this.IsValid && this.points.Count() > 1)
+            {
+                // create the leyline...
+                var ll = GameObject.Instantiate(this.LeylinePrefab);
+                ll.transform.parent = this.LeylineContainer.transform;
+                ll.GetComponent<LeylineBehavior>().SetPoints(this.points);
+            }
+            Debug.Log("LeyLineEnd");
+  
+            this.points.Clear();
+
+            this.GetComponent<PathRendererBehavior>().Clear();
+        }
     }
 }

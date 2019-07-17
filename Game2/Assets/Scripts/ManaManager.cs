@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public interface ILeyline
 {
@@ -15,6 +16,8 @@ public class LeylineNetwork
 
     private int id = NextId++;
     private List<LeylineNode> nodes = new List<LeylineNode>();
+
+
     public void Merge(LeylineNetwork n)
     {
         this.nodes.AddRange(n.nodes);
@@ -25,29 +28,68 @@ public class LeylineNetwork
         this.nodes.Add(node);
     }
 
+    public LeylineNode GetOtherNode(LeylineNode n)
+    {
+        if (!this.nodes.Contains(n)) return null;
+
+        return this.nodes.FirstOrDefault(x => x != n);
+
+    }
+
     public void Tick()
     {
-        var p = new Mana();
-        foreach (var n in this.nodes)
+        if(this.nodes.Count() != 2)
         {
-            p += n.Potential;
+            return;
         }
 
-        var charged = p == Mana.Zero;
-        Debug.Log(string.Format("LeylineNetwork Charge: {0} {1}", this.id, charged));
+        var n0 = this.nodes[0];
+        var n1 = this.nodes[1];
 
-        foreach (var n in this.nodes)
+        if (n0.Potential.IsNaM()) return;
+        if (n1.Potential.IsNaM()) return;
+
+        var p = n0.Potential + n1.Potential;// new Mana();
+
+        if (p.IsNaM()) return;
+
+        if (p == Mana.Zero)
         {
-            n.Charged = charged;
+            n0.Charged = n1.Potential;
+            n1.Charged = n0.Potential;
         }
+        else if (n1.Potential.X && n0.Potential.X)
+        {
+            n0.Charged = Mana.Zero;
+            n1.Charged = Mana.Zero;
+        }
+        else if (p > Mana.Zero && n0.Potential.X)
+        {
+            n0.Charged = n1.Potential;
+            n1.Charged = -n1.Potential;
+        }
+        else if (p > Mana.Zero && n1.Potential.X)
+        {
+            n0.Charged = -n0.Potential;
+            n1.Charged = n0.Potential;
+        }
+        else
+        {
+            n0.Charged = Mana.Zero;
+            n1.Charged = Mana.Zero;
+        }
+
     }
 }
 
 public class ManaManager : MonoBehaviour, ITickable
 {
-    private Dictionary<Vector3Int, LeylineNetwork> networks = new Dictionary<Vector3Int, LeylineNetwork>();
 
-	void Start ()
+    HashSet<Vector3Int> Occupancy = new HashSet<Vector3Int>();
+    private Dictionary<Vector3Int, LeylineNetwork> Networks = new Dictionary<Vector3Int, LeylineNetwork>();
+    private List<LeylineBehavior> leylines = new List<LeylineBehavior>();
+
+    void Start ()
     {
         GameManager.current.Register(this);
     }
@@ -61,78 +103,48 @@ public class ManaManager : MonoBehaviour, ITickable
         //  else set them all to Charged = false
         //  
 
-        foreach(var n in this.networks.Values)
+        foreach(var ll in this.leylines)
         {
-            n.Tick();
+            ll.CalculatePotential();
         }
+
+        foreach(var network in this.Networks.Values)
+        {
+            network.Tick();
+        }
+
     }
 
-    public void AddLeyline(ILeyline leyline)
+    internal bool IsOccupied(Vector3 p)
     {
-        Debug.Log(string.Format("Leyline: {0}, {1}", leyline.p0, leyline.p1));
-
-        LeylineNetwork n0, n1;
-        this.networks.TryGetValue(leyline.p0, out n0);
-        this.networks.TryGetValue(leyline.p1, out n1);
-
-        if (n0 == null && n1 == null)
-        {
-
-            Debug.Log(string.Format("LeylineNetwork: n0 {0}, n1 {1}", leyline.p0, leyline.p1));
-            n0 = n1 = new LeylineNetwork();
-            this.networks.Add(leyline.p0, n0);
-            this.networks.Add(leyline.p1, n1);
-        }
-
-        if (n0 != null && n1 == null)
-        {
-            Debug.Log(string.Format("LeylineNetwork: n0 {0}", leyline.p0));
-            this.networks.Add(leyline.p1, n0);
-        }
-
-        if (n0 == null && n1 != null)
-        {
-            Debug.Log(string.Format("LeylineNetwork: n1 {0}", leyline.p1));
-            this.networks.Add(leyline.p0, n1);
-        }
-
-        if (n0 != null & n1 != null)
-        {
-            if (n0 == n1)
-            {
-                // no-op
-                Debug.Log(string.Format("LeylineNetwork: noop"));
-            }
-            else
-            {
-                Debug.Log(string.Format("LeylineNetworks: n0 {0}, n1 {1}", leyline.p0, leyline.p1));
-                // combine n0 and n1
-                // and use n0
-                n0.Merge(n1);
-                foreach(var t in this.networks.ToArray())
-                {
-                    if (t.Value == n1)
-                    {
-                        this.networks[t.Key] = n0;
-                    }
-                }
-                // n1 is no longer ref'd
-            }
-        }
+        return this.Occupancy.Contains(p.ToInt());
     }
 
-    public void AddNode(LeylineNode node)
+    public void Occupy(IEnumerable<Vector3> positions)
     {
-        Debug.Log(string.Format("LeylineNode: {0}", node.transform.position.ToInt()));
-
-        var p = Vector3Int.FloorToInt(node.transform.position);
-        LeylineNetwork n0;
-        if (!this.networks.TryGetValue(p, out n0))
+        foreach(var p in positions)
         {
-            n0 = new LeylineNetwork();
-            this.networks.Add(p, n0);
+            this.Occupancy.Add(p.ToInt());
         }
-        n0.Add(node);
+    }
+    
+    public LeylineNetwork AddNode(LeylineNode node)
+    {
+        var position = node.transform.position.ToInt();
+        var network = this.Networks.SafeGetValue(position);
+        if(network == null)
+        {
+            network = new LeylineNetwork();
+            this.Networks[position] = network;
+        }
+
+        network.Add(node);
+        return network;
+    }
+
+    public void AddLeyline(LeylineBehavior leyline)
+    {
+        this.leylines.Add(leyline);
     }
     
     private void CalculateNetworks()
@@ -142,5 +154,10 @@ public class ManaManager : MonoBehaviour, ITickable
         // 2. repeat until there are no open connections
         // 3. For each provider find which network it is in
         // 4. For each consumer find which network it is in
+    }
+
+    internal LeylineNetwork GetNetwork(Vector3 position)
+    {
+        return this.Networks.SafeGetValue(position.ToInt());
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using M = Mana;
 
 public class ManaBatteryBehavior : MonoBehaviour, ITickable {
 
@@ -28,12 +29,12 @@ public class ManaBatteryBehavior : MonoBehaviour, ITickable {
             }
         }
 
-        if (this.Mana > 0 && this.output.Charged)
+        if (this.Mana > 0 && this.output.Charged < M.Zero)
         {
             this.Mana = Math.Max(0, this.Mana - this.FillRate);
         }
 
-        if (this.Mana < this.MaxMana && this.input.Charged)
+        if (this.Mana < this.MaxMana && this.input.Charged >= M.Zero)
         {
             this.Mana = Math.Min(this.MaxMana, this.Mana + this.FillRate);
         }

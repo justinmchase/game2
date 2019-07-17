@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class LeylineNode : MonoBehaviour {
     public Mana Potential;
-    public bool Charged;
+    public Mana Charged;
 }

@@ -20,8 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4485599863004220}
   - component: {fileID: 114800747466291936}
-  - component: {fileID: 212749668532803756}
-  - component: {fileID: 61269551409695506}
+  - component: {fileID: 114992482540071366}
   m_Layer: 8
   m_Name: Leyline
   m_TagString: Untagged
@@ -42,31 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61269551409695506
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1512267668881334}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25}
-  m_EdgeRadius: 0
 --- !u!114 &114800747466291936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,49 +52,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5a4bf16fb5ec34b889c5acc3aa1c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &212749668532803756
-SpriteRenderer:
+  ConnectorPrefab: {fileID: 1189436233661432, guid: d89f15b7c1590a14fb7b31df976c14ce,
+    type: 2}
+  DotPrefab: {fileID: 1799726616216724, guid: d49ab4f51ea763c4589dc2e176330b87, type: 2}
+  LeylineNodePrefab: {fileID: 1126989045270528, guid: 67a4087071722f947b022f1297f0f384,
+    type: 2}
+  A: {fileID: 0}
+  B: {fileID: 0}
+--- !u!114 &114992482540071366
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1512267668881334}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1121341633
-  m_SortingLayer: 6
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: c08bc330197ae0e4390a4e7b58ebb3ad, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7e782e616961f47956e023b423c5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: []
+  DotPrefab: {fileID: 1799726616216724, guid: d49ab4f51ea763c4589dc2e176330b87, type: 2}
+  LinePrefab: {fileID: 1189436233661432, guid: d89f15b7c1590a14fb7b31df976c14ce, type: 2}

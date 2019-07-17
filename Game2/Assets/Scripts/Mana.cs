@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 [Serializable]
 public struct Mana
@@ -15,6 +17,57 @@ public struct Mana
 
     public int White;
     public int Black;
+
+    public bool X;
+
+    public bool IsNaM()
+    {
+        if(this.GetMana().All(i => i >= 0))
+        {
+            if (this.X) return true;
+            return false;
+        }
+
+        if (this.GetMana().All(i => i <= 0))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public IEnumerable<int> GetMana()
+    {
+        yield return Red;
+        yield return Blue;
+        yield return Yellow;
+
+        yield return Orange;
+        yield return Purple;
+        yield return Green;
+
+        yield return Brown;
+
+        yield return White;
+        yield return Black;
+    }  
+
+
+    public static Mana operator -(Mana a)
+    {
+        return new Mana()
+        {
+            Red = -a.Red ,
+            Blue = -a.Blue,
+            Yellow = -a.Yellow,
+            Orange = -a.Orange,
+            Purple = -a.Purple,
+            Green = -a.Green,
+            Brown = -a.Brown,
+            White = -a.White,
+            Black = -a.Black,
+        };
+    }
 
     public static Mana operator +(Mana a, Mana b)
     {
@@ -39,6 +92,26 @@ public struct Mana
     public static bool operator !=(Mana e0, Mana e1)
     {
         return !e0.Equals(e1);
+    }
+
+    public static bool operator >(Mana e0, Mana e1)
+    {
+        return e0.GetMana().Sum() > e1.GetMana().Sum();
+    }
+
+    public static bool operator <(Mana e0, Mana e1)
+    {
+        return !(e0 >= e1);
+    }
+
+    public static bool operator >=(Mana e0, Mana e1)
+    {
+        return e0.GetMana().Sum() >= e1.GetMana().Sum();
+    }
+
+    public static bool operator <=(Mana e0, Mana e1)
+    {
+        return !(e0 > e1);
     }
 
     public static Mana Zero = new Mana();
