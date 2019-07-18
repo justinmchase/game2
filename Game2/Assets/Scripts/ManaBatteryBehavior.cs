@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using M = Mana;
 
-public class ManaBatteryBehavior : MonoBehaviour, ITickable {
+public class ManaBatteryBehavior : MonoBehaviour, IManaInput, IManaOutput, ITickable {
 
-    public int Mana;
+    public Mana Color;
+    public List<Mana> Mana = new List<Mana>();
     public int MaxMana = 100;
     public int FillRate = 10;
 
@@ -14,52 +15,51 @@ public class ManaBatteryBehavior : MonoBehaviour, ITickable {
 
     public Animator animator;
 
-    private LeylineNode input, output;
+    private IManaOutput output;
+
+    public void Connect(IManaOutput output)
+    {
+        this.output = output;
+    }
+
+    public Mana[] Available
+    {
+        get
+        {
+            var n = Mathf.Min(this.Mana.Count, this.FillRate);
+            return this.Mana.Take(n).ToArray();
+        }
+    }
 
     public void Tick()
     {
-        if (this.active)
+        if (this.output != null)
         {
-            var player = GameManager.current.player.GetComponent<CreatureBehavior>();
-            if (player.Mana > 0 && this.Mana < this.MaxMana)
-            {
-                var mana = Mathf.Min(player.Mana, this.MaxMana - this.Mana, this.FillRate);
-                player.Mana -= mana;
-                this.Mana += mana;
-            }
-        }
+            var n = Mathf.Min(
+                this.output.Available.Where(m => m == this.Color).Count(),
+                this.MaxMana - this.Mana.Count,
+                this.FillRate
+            );
 
-        if (this.Mana > 0 && this.output.Charged < M.Zero)
-        {
-            this.Mana = Math.Max(0, this.Mana - this.FillRate);
+            var mana = this.output.Available.Where(m => m == this.Color).Take(n);
+            this.output.Consume(mana.ToArray());
+            this.Mana.AddRange(mana);
         }
+        this.animator.SetFloat("Fill Percent", (float)this.Mana.Count / (float)this.MaxMana);
+    }
 
-        if (this.Mana < this.MaxMana && this.input.Charged >= M.Zero)
-        {
-            this.Mana = Math.Min(this.MaxMana, this.Mana + this.FillRate);
-        }
-
-        if (this.Mana > 0)
-        {
-            this.output.Potential.Blue = 1;
-        }
-        else
-        {
-            this.output.Potential.Blue = 0;
-        }
-
-        this.animator.SetFloat("Fill Percent", (float)this.Mana / (float)this.MaxMana);
+    void IManaOutput.Consume(Mana[] mana)
+    {
+        this.Mana.RemoveRange(0, mana.Length);
     }
 
     private void Start()
     {
         GameManager.current.Register(this);
         var mm = GameManager.current.GetComponent<ManaManager>();
-        this.input = this.transform.Find("Input").GetComponent<LeylineNode>();
-        this.output = this.transform.Find("Output").GetComponent<LeylineNode>();
-        mm.AddNode(this.input);
-        mm.AddNode(this.output);
-        this.input.Potential.Blue = -1;
+        var input = this.transform.Find("Input");
+        var output = this.transform.Find("Output");
+        mm.AddInput(input.transform.position, this);
     }
 
     public void Activate()

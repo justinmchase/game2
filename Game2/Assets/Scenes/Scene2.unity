@@ -2195,8 +2195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cfe935549ce0854096c0ac03c327f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectorPrefab: {fileID: 0}
-  DotPrefab: {fileID: 0}
 --- !u!114 &591823546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2585,8 +2583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cfe935549ce0854096c0ac03c327f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectorPrefab: {fileID: 0}
-  DotPrefab: {fileID: 0}
 --- !u!1001 &777422447
 Prefab:
   m_ObjectHideFlags: 0
@@ -2811,6 +2807,11 @@ Prefab:
     - target: {fileID: 4425287199991452, guid: 620948ed4b54b874b9ff28a9308184b8, type: 2}
       propertyPath: m_RootOrder
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114089178069133020, guid: 620948ed4b54b874b9ff28a9308184b8,
+        type: 2}
+      propertyPath: Color
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 620948ed4b54b874b9ff28a9308184b8, type: 2}
@@ -4955,6 +4956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   FillRate: 10
+  Color: 1
 --- !u!224 &1914995704 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224492199572221216, guid: 867051b9dabb8b64e8d0a8b470ff399c,
@@ -5176,7 +5178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856750bdd4561184985de19340d49025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mana: 0
+  Color: 1
+  Mana: 
   MaxMana: 100
   FillRate: 10
   active: 0

@@ -18,7 +18,7 @@ public class ManaBarBehavior : MonoBehaviour {
         if (this.creature != null && this.slider != null)
         {
             this.slider.maxValue = creature.MaxMana;
-            this.slider.value = creature.Mana;
+            this.slider.value = creature.Mana.Count;
         }
 	}
 }

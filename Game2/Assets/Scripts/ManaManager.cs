@@ -4,90 +4,29 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public interface ILeyline
+public struct Leyline
 {
-    Vector3Int p0 { get; }
-    Vector3Int p1 { get; }
+    public Vector3Int p0;
+    public Vector3Int p1;
 }
 
-public class LeylineNetwork
+public interface IManaInput
 {
-    private static int NextId = 0;
+    void Connect(IManaOutput output);
+}
 
-    private int id = NextId++;
-    private List<LeylineNode> nodes = new List<LeylineNode>();
-
-
-    public void Merge(LeylineNetwork n)
-    {
-        this.nodes.AddRange(n.nodes);
-    }
-
-    public void Add(LeylineNode node)
-    {
-        this.nodes.Add(node);
-    }
-
-    public LeylineNode GetOtherNode(LeylineNode n)
-    {
-        if (!this.nodes.Contains(n)) return null;
-
-        return this.nodes.FirstOrDefault(x => x != n);
-
-    }
-
-    public void Tick()
-    {
-        if(this.nodes.Count() != 2)
-        {
-            return;
-        }
-
-        var n0 = this.nodes[0];
-        var n1 = this.nodes[1];
-
-        if (n0.Potential.IsNaM()) return;
-        if (n1.Potential.IsNaM()) return;
-
-        var p = n0.Potential + n1.Potential;// new Mana();
-
-        if (p.IsNaM()) return;
-
-        if (p == Mana.Zero)
-        {
-            n0.Charged = n1.Potential;
-            n1.Charged = n0.Potential;
-        }
-        else if (n1.Potential.X && n0.Potential.X)
-        {
-            n0.Charged = Mana.Zero;
-            n1.Charged = Mana.Zero;
-        }
-        else if (p > Mana.Zero && n0.Potential.X)
-        {
-            n0.Charged = n1.Potential;
-            n1.Charged = -n1.Potential;
-        }
-        else if (p > Mana.Zero && n1.Potential.X)
-        {
-            n0.Charged = -n0.Potential;
-            n1.Charged = n0.Potential;
-        }
-        else
-        {
-            n0.Charged = Mana.Zero;
-            n1.Charged = Mana.Zero;
-        }
-
-    }
+public interface IManaOutput
+{
+    Mana[] Available { get; }
+    void Consume(Mana[] mana);
 }
 
 public class ManaManager : MonoBehaviour, ITickable
 {
-
     HashSet<Vector3Int> Occupancy = new HashSet<Vector3Int>();
-    private Dictionary<Vector3Int, LeylineNetwork> Networks = new Dictionary<Vector3Int, LeylineNetwork>();
-    private List<LeylineBehavior> leylines = new List<LeylineBehavior>();
+    private Dictionary<Vector3Int, IManaInput> Inputs = new Dictionary<Vector3Int, IManaInput>();
+    private Dictionary<Vector3Int, IManaOutput> Outputs = new Dictionary<Vector3Int, IManaOutput>();
+    private List<Leyline> leylines = new List<Leyline>();
 
     void Start ()
     {
@@ -96,23 +35,6 @@ public class ManaManager : MonoBehaviour, ITickable
 
     public void Tick()
     {
-        //--
-        // For each network
-        //  Calculate the potential of all points
-        //  if potential is 0 then set all points to Charged = true
-        //  else set them all to Charged = false
-        //  
-
-        foreach(var ll in this.leylines)
-        {
-            ll.CalculatePotential();
-        }
-
-        foreach(var network in this.Networks.Values)
-        {
-            network.Tick();
-        }
-
     }
 
     internal bool IsOccupied(Vector3 p)
@@ -127,37 +49,47 @@ public class ManaManager : MonoBehaviour, ITickable
             this.Occupancy.Add(p.ToInt());
         }
     }
-    
-    public LeylineNetwork AddNode(LeylineNode node)
+
+    public void AddOutput(Vector3 position, IManaOutput output)
     {
-        var position = node.transform.position.ToInt();
-        var network = this.Networks.SafeGetValue(position);
-        if(network == null)
+        this.Outputs.Add(position.ToInt(), output);
+        this.CalculateConnections();
+    }
+
+    public void AddInput(Vector3 position, IManaInput input)
+    {
+        this.Inputs.Add(position.ToInt(), input);
+        this.CalculateConnections();
+    }
+
+    public void AddLeyline(Vector3 p0, Vector3 p1)
+    {
+        this.leylines.Add(new Leyline() {
+            p0 = p0.ToInt(),
+            p1 = p1.ToInt()
+        });
+        this.CalculateConnections();
+    }
+    
+    private void CalculateConnections()
+    {
+        foreach(var ll in this.leylines)
         {
-            network = new LeylineNetwork();
-            this.Networks[position] = network;
+            var o0 = this.Outputs.SafeGetValue(ll.p0);
+            var i0 = this.Inputs.SafeGetValue(ll.p1);
+            if (o0 != null && i0 != null)
+            {
+                i0.Connect(o0);
+                continue;
+            }
+
+            var i1 = this.Inputs.SafeGetValue(ll.p0);
+            var o1 = this.Outputs.SafeGetValue(ll.p1);
+            if (i1 != null && o1 != null)
+            {
+                i1.Connect(o1);
+                continue;
+            }
         }
-
-        network.Add(node);
-        return network;
-    }
-
-    public void AddLeyline(LeylineBehavior leyline)
-    {
-        this.leylines.Add(leyline);
-    }
-    
-    private void CalculateNetworks()
-    {
-        // Flood fill
-        // 1. Build grah connection map
-        // 2. repeat until there are no open connections
-        // 3. For each provider find which network it is in
-        // 4. For each consumer find which network it is in
-    }
-
-    internal LeylineNetwork GetNetwork(Vector3 position)
-    {
-        return this.Networks.SafeGetValue(position.ToInt());
     }
 }

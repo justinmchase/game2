@@ -39,7 +39,7 @@ public class CreatureBehavior : MonoBehaviour
     public GameObject AttackFocus = null;
 
     public int HP = 0;
-    public int Mana = 0;
+    public List<Mana> Mana = new List<Mana>();
     public int MaxMana = 100;
 
 

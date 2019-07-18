@@ -2,35 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManaCrystalBehavior : MonoBehaviour, ITickable {
+public class ManaCrystalBehavior : MonoBehaviour, IManaOutput {
 
     public bool active = false;
 
-    public int FillRate = 10;
+    public int FillRate = 1;
 
-    private LeylineNode output;
+    public Mana Color;
 
-    public void Tick()
+    public Mana[] Available
     {
-        if (this.active)
+        get
         {
-            var player = GameManager.current.player.GetComponent<CreatureBehavior>();
-            if (player.Mana < player.MaxMana)
-            {
-                var mana = Mathf.Min(this.FillRate, player.MaxMana - player.Mana);
-                player.Mana += mana;
-            }
+            return new Mana[1] { this.Color };
         }
+    }
+
+    public void Consume(Mana[] mana)
+    {
     }
 
 	// Use this for initialization
 	void Start ()
     {
-        GameManager.current.Register(this);
+        //GameManager.current.Register(this);
         var mm = GameManager.current.GetComponent<ManaManager>();
-        this.output = this.transform.Find("Output").GetComponent<LeylineNode>();
-        mm.AddNode(this.output);
-        this.output.Potential.Blue = 1;
+        var output = this.transform.Find("Output");
+        mm.AddOutput(output.transform.position, this);
     }
 	
     public void Activate()
