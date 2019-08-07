@@ -7,6 +7,7 @@ public class PathRendererBehavior : MonoBehaviour {
 
     public GameObject DotPrefab;
     public GameObject LinePrefab;
+    public GameObject ConnectorPrefab;
 
     private List<GameObject> PathObjects = new List<GameObject>();
 
@@ -24,6 +25,14 @@ public class PathRendererBehavior : MonoBehaviour {
     private void CreateDotVisual(Vector3 location)
     {
         var dot = GameObject.Instantiate(DotPrefab);
+        dot.transform.position = location;
+        dot.transform.parent = this.transform;
+        this.PathObjects.Add(dot);
+    }
+
+    private void CreateConnectorVisual(Vector3 location)
+    {
+        var dot = GameObject.Instantiate(ConnectorPrefab);
         dot.transform.position = location;
         dot.transform.parent = this.transform;
         this.PathObjects.Add(dot);
@@ -62,15 +71,22 @@ public class PathRendererBehavior : MonoBehaviour {
         }
 
 
-        if (this.Path.Length > 0)
+        if (this.Path.Length > 1)
         {
-            this.CreateDotVisual(this.Path[0]);
+            this.CreateConnectorVisual(this.Path[0]);
 
-            for (int i = 1; i < this.Path.Length; i++)
+            int i = 1;
+
+            while(i < this.Path.Length - 1)
             {
                 this.CreateLineVisual(this.Path[i - 1], this.Path[i]);
                 this.CreateDotVisual(this.Path[i]);
+                i++;
             }
+
+            this.CreateLineVisual(this.Path[i - 1], this.Path[i]);
+            this.CreateConnectorVisual(this.Path[i]);
+
         }
 
 	}

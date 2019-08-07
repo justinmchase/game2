@@ -7,6 +7,7 @@ TextureImporter:
     21300004: connectors_2
     21300006: connectors_3
     21300008: connectors_4
+    21300010: connectors_5
   externalObjects: {}
   serializedVersion: 6
   mipmaps:
@@ -184,6 +185,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d6c221057cbaad941a0e9639ad9a2d26
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: connectors_5
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 117
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1cd8ac774a5d94dadb5d042a03d81e
       vertices: []
       indices: 
       edges: []

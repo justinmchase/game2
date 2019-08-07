@@ -50,6 +50,14 @@ public class ManaManager : MonoBehaviour, ITickable
         }
     }
 
+    public void UnOccupy(IEnumerable<Vector3> positions)
+    {
+        foreach (var p in positions)
+        {
+            this.Occupancy.Remove(p.ToInt());
+        }
+    }
+
     public void AddOutput(Vector3 position, IManaOutput output)
     {
         this.Outputs.Add(position.ToInt(), output);

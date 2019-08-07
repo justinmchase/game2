@@ -85,9 +85,47 @@ public class LeylineTool : Tool {
 
         //..
 
+
         if (Input.GetMouseButton(0) && this.points.Count == 0)
         {
-            StartLeyline(position);
+            bool isNew = true;
+            //did  we click on the start or end of a line?
+            var leylines = GameObject.Find("Leylines").GetComponentsInChildren<PathRendererBehavior>();
+            foreach (var ll in leylines)
+            {
+                if (ll.Path.First() == position)
+                {
+                    //yes, so we are editing it
+                    this.points = ll.Path.Reverse<Vector3>().ToList();
+
+                    GameManager.current.GetComponent<ManaManager>().UnOccupy(this.points);
+                    GameObject.Destroy(ll.gameObject);
+                    isNew = false;
+
+                    var pathRenderer = this.GetComponent<PathRendererBehavior>();
+                    pathRenderer.Path = this.points.ToArray();
+                    pathRenderer.UpdateChildren();
+                }
+                else if (ll.Path.Last() == position)
+                {
+                    //yes, so we are editing it
+                    this.points = ll.Path.ToList();
+                    
+                    GameManager.current.GetComponent<ManaManager>().UnOccupy(this.points);
+                    GameObject.Destroy(ll.gameObject);
+                    isNew = false;
+
+                    var pathRenderer = this.GetComponent<PathRendererBehavior>();
+                    pathRenderer.Path = this.points.ToArray();
+                    pathRenderer.UpdateChildren();
+                }
+            }
+
+
+            if (isNew)
+            {
+                StartLeyline(position);
+            }
         }
         else if (Input.GetMouseButton(0) && this.points.Count > 0)
         {
@@ -130,10 +168,10 @@ public class LeylineTool : Tool {
         if (Input.GetMouseButtonUp(0))
         {
 
-            if (this.IsValid && this.points.Count() > 1)
+            if (this.points.Count() > 1 && this.IsValid)
             {
                 // create the leyline...
-                var ll = GameObject.Instantiate(this.LeylinePrefab);
+                var ll = GameObject.Instantiate(this.LeylinePrefab).GetComponent<LeylineBehavior>();
                 ll.transform.parent = this.LeylineContainer.transform;
                 ll.GetComponent<LeylineBehavior>().SetPoints(this.points);
             }

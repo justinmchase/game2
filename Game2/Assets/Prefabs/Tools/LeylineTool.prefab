@@ -57,6 +57,8 @@ MonoBehaviour:
   Path: []
   DotPrefab: {fileID: 1799726616216724, guid: d49ab4f51ea763c4589dc2e176330b87, type: 2}
   LinePrefab: {fileID: 1189436233661432, guid: d89f15b7c1590a14fb7b31df976c14ce, type: 2}
+  ConnectorPrefab: {fileID: 1244052552024590, guid: d0bd0522cde47b54dbe291f726a92fb3,
+    type: 2}
 --- !u!224 &224565025753495770
 RectTransform:
   m_ObjectHideFlags: 1

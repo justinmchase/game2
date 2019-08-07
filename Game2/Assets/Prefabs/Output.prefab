@@ -35,7 +35,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4013478144921638}
-  - component: {fileID: 114827414986157218}
   m_Layer: 0
   m_Name: Output
   m_TagString: Untagged
@@ -100,39 +99,6 @@ Transform:
   m_Father: {fileID: 4013478144921638}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114827414986157218
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1637513774702728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f31e48f62ad7a4c45a5edf320fecf587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Potential:
-    Red: 0
-    Blue: 0
-    Yellow: 0
-    Orange: 0
-    Purple: 0
-    Green: 0
-    Brown: 0
-    White: 0
-    Black: 0
-    X: 0
-  Charged:
-    Red: 0
-    Blue: 0
-    Yellow: 0
-    Orange: 0
-    Purple: 0
-    Green: 0
-    Brown: 0
-    White: 0
-    Black: 0
-    X: 0
 --- !u!212 &212137349212429664
 SpriteRenderer:
   m_ObjectHideFlags: 1
