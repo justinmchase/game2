@@ -11,8 +11,8 @@ ScriptedImporter:
     7400002: opening
     7400004: closing
     9500000: Chest2/Chest2/Animator
-    11400000: Chest2/Chest2/MonoBehaviour-Game.CreatureBehavior
     11400002: Chest2/Chest2/MonoBehaviour-YZSync
+    11400004: Chest2/Chest2/MonoBehaviour-CreatureBehavior
     21200000: Chest2/Chest2/SpriteRenderer
     21300000: Chest2_sprite_0
     21300002: Chest2_sprite_1

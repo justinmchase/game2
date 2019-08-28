@@ -13,8 +13,8 @@ ScriptedImporter:
     7400006: Rat_Attack
     7400008: Rat_Idle
     9500000: Mouse/Mouse/Animator
-    11400000: Mouse/Mouse/MonoBehaviour-Game.CreatureBehavior
     11400002: Mouse/Mouse/MonoBehaviour-YZSync
+    11400004: Mouse/Mouse/MonoBehaviour-CreatureBehavior
     21200000: Mouse/Mouse/SpriteRenderer
     21300000: Mouse_sprite_29
     21300002: Mouse_sprite_30
